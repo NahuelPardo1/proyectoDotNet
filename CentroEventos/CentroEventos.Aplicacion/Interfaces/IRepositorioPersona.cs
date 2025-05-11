@@ -6,5 +6,8 @@ public interface IRepositorioPersona
     void modificarPersona(Persona persona);
     void eliminarPersona(int id);
     List<Persona> listarPersonas();
-    
+    Persona obtenerPorID(int id);
+    Persona obtenerPorDNI(string dni);
+    Persona obtenerPorEmail(string email);
+
 }
