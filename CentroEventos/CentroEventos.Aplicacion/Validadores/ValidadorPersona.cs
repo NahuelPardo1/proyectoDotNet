@@ -32,12 +32,12 @@ public class ValidadorPersona
             mensaje += "El email no puede estar vacio \n";
         }
 
-        if (p.obtenerPorDNI(persona.DNI) != null)
+        if (_repositorio.obtenerPorDNI(persona.DNI) != null)
         {
             mensaje += "El DNI ya existe \n";
         }
 
-        if (p.obtenerPorEmail(persona.Email)!= null)
+        if (_repositorio.obtenerPorEmail(persona.Email)!= null)
         {
             mensaje += "El email ya existe \n";
         }
