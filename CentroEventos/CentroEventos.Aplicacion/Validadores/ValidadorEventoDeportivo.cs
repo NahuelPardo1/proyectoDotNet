@@ -2,7 +2,14 @@
 
 public class ValidadorEventoDeportivo
 {
-    public bool Validar(EventoDeportivo eDeportivo,out string msgError)
+	private readonly IRepositorioPersona _Rpersona;
+
+    public ValidadorEventoDeportivo(IRepositorioEventoDeportivo e)
+	{
+		this._Rpersona = p;
+	}
+
+	public bool Validar(EventoDeportivo eDeportivo,out string msgError)
     {
         msgError = "";
         if (eDeportivo.Nombre.lenght < 0)
@@ -19,8 +26,8 @@ public class ValidadorEventoDeportivo
         {
             msgError += "Cupo maximo del evento deportivo no puede ser menor a 0.\n";
         }
-        IPersona p = obtenerID(eDeportivo.ResponsbleID);
-        if (p==null)
+        
+        if (_Rpersona.ObtenerPorID(eDeportivo.ResponsbleID)==null)
         {
             msgError+= "Responsable del evento deportivo no existe.\n";
         }
