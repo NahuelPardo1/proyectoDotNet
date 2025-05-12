@@ -2,11 +2,11 @@
 
 public class ValidadorPersona
 {
-    private readonly IRepositorioPersona p;
+    private readonly IRepositorioPersona _repositorio;
 
     public ValidadorPersona(IRepositorioPersona p)
     {
-        this.p = p;
+        this._repositorio = p;
     }
 
     public bool Validador(Persona persona, out string mensaje)
@@ -14,32 +14,32 @@ public class ValidadorPersona
         mensaje = "";
         if (string.isNullOrEmptySpace(persona.Nombre))
         {
-            mensaje = "El nombre no puede estar vacio";
+            mensaje += "El nombre no puede estar vacio \n";
         }
 
         if (string.isNullOrEmptySpace(persona.Apellido))
         {
-            mensaje = "El apellido no puede estar vacio";
+            mensaje += "El apellido no puede estar vacio \n";
         }
 
         if (string.isNullOrEmptySpace(persona.DNI))
         {
-            mensaje= "El DNI no puede estar vacio";
+            mensaje += "El DNI no puede estar vacio \n";
         }
 
         if (string.isNullOrEmptySpace(persona.Email))
         {
-            mensaje = "El email no puede estar vacio";
+            mensaje += "El email no puede estar vacio \n";
         }
 
         if (p.obtenerPorDNI(persona.DNI) != null)
         {
-            mensaje = "El DNI ya existe";
+            mensaje += "El DNI ya existe \n";
         }
 
         if (p.obtenerPorEmail(persona.Email)!= null)
         {
-            mensaje = "El email ya existe";
+            mensaje += "El email ya existe \n";
         }
 
         return mensaje == "";
