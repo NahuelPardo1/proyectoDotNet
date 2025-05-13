@@ -1,27 +1,21 @@
-﻿namespace CentroEventos.Aplicacion;
+﻿using CentroEventos.Aplicacion.Enums;
+
+namespace CentroEventos.Aplicacion;
 
 public class Reserva
 {
-    public int Id { get; set; };
-    public int PersonalId { get; set; };
-    public int EventoDeportivoId { get; set; };
-    public DateTime FechaAltaReserva { get; set; };
-    public enun EstadoReserva { get; set; };
+    public int Id { get; set; }
+    public int PersonaId { get; set; }
+    public int EventoDeportivoId { get; set; }
+    public DateTime FechaAltaReserva { get; set; }
+    public Permiso EstadoReserva { get; set; }
     
-    public Reserva()
-    {
-        PersonalId=0;
-        EventoDeportivoId=0;
-        FechaAltaReserva=0;
-        EstadoReserva=0;
-    }
-
     public override string ToString()
     {
-        return $"ID:{ID}\n" +
-               $"Nombre:{PersonalId}\n" +
+        return $"ID:{Id}\n" +
+               $"Nombre:{PersonaId}\n" +
                $"Descripcion:{EventoDeportivoId}\n" +
-               $"FechaHoraInicio:{FechaHoraInicio}\n" +
+               $"FechaHoraInicio:{FechaAltaReserva}\n" +
                $"DuracionHoras:{FechaAltaReserva}\n" +
                $"CupoMaximo:{EstadoReserva}\n";
     }

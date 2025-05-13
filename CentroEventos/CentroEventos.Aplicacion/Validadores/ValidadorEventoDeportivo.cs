@@ -1,10 +1,12 @@
-﻿namespace CentroEvento.Aplicacion.Validadores;
+﻿using CentroEventos.Aplicacion;
+
+namespace CentroEvento.Aplicacion.Validadores;
 
 public class ValidadorEventoDeportivo
 {
 	private readonly IRepositorioPersona _Rpersona;
 
-    public ValidadorEventoDeportivo(IRepositorioEventoDeportivo e)
+    public ValidadorEventoDeportivo(IRepositorioPersona p)
 	{
 		this._Rpersona = p;
 	}
@@ -12,12 +14,12 @@ public class ValidadorEventoDeportivo
 	public bool Validar(EventoDeportivo eDeportivo,out string msgError)
     {
         msgError = "";
-        if (eDeportivo.Nombre.lenght < 0)
+        if (eDeportivo.Nombre.Length < 0)
         {
             msgError += "Nombre del evento deportivo no puede ser vacio.\n";
         }
 
-        if (eDeportivo.Descripcion.lenght < 0)
+        if (eDeportivo.Descripcion.Length < 0)
         {
             msgError += "Descripcion del evento deportivo no puede ser vacio.\n";
         }

@@ -1,14 +1,53 @@
 {
   "version": 3,
   "targets": {
-    "net9.0": {}
+    "net9.0": {
+      "CentroEventos.Aplicacion/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/CentroEventos.Aplicacion.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CentroEventos.Aplicacion.dll": {}
+        }
+      },
+      "CentroEventos.Consola/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "CentroEventos.Aplicacion": "1.0.0",
+          "CentroEventos.Repositorios": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/CentroEventos.Consola.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CentroEventos.Consola.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "CentroEventos.Aplicacion/1.0.0": {
+      "type": "project",
+      "path": "../CentroEventos.Aplicacion/CentroEventos.Aplicacion.csproj",
+      "msbuildProject": "../CentroEventos.Aplicacion/CentroEventos.Aplicacion.csproj"
+    },
+    "CentroEventos.Consola/1.0.0": {
+      "type": "project",
+      "path": "../CentroEventos.Consola/CentroEventos.Consola.csproj",
+      "msbuildProject": "../CentroEventos.Consola/CentroEventos.Consola.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net9.0": []
+    "net9.0": [
+      "CentroEventos.Consola >= 1.0.0"
+    ]
   },
   "packageFolders": {
-    "C:\\Users\\Nahu\\.nuget\\packages\\": {}
+    "C:\\Users\\Nahu\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
@@ -19,19 +58,30 @@
       "packagesPath": "C:\\Users\\Nahu\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Nahu\\Desktop\\proyectoDotNet\\CentroEventos\\CentroEventos.Repositorios\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Nahu\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Nahu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Nahu\\Desktop\\proyectoDotNet\\CentroEventos\\CentroEventos.Consola\\CentroEventos.Consola.csproj": {
+              "projectPath": "C:\\Users\\Nahu\\Desktop\\proyectoDotNet\\CentroEventos\\CentroEventos.Consola\\CentroEventos.Consola.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -68,5 +118,16 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1108",
+      "level": "Error",
+      "message": "Ciclo detectado. \r\n  CentroEventos.Repositorios -> CentroEventos.Consola -> CentroEventos.Repositorios.",
+      "libraryId": "CentroEventos.Repositorios",
+      "targetGraphs": [
+        "net9.0"
+      ]
+    }
+  ]
 }

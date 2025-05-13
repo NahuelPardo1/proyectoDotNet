@@ -2,6 +2,7 @@
 
 public interface IRepositorioReserva : IRepositorioBase<Reserva>
 {
-    private readonly IRepositorioPersona _repositorioP;
-
+    Reserva? ObtenerPorPersonaYEvento(int personaId, int eventoId);
+    List<Reserva> ObtenerPorEvento(int eventoId);
+    List<Reserva> ObtenerPorPersona(int personaId);
 }

@@ -1,8 +1,18 @@
 {
   "version": 2,
-  "dgSpecHash": "H4QB9wAHVaI=",
-  "success": true,
+  "dgSpecHash": "U7boTaGn8C0=",
+  "success": false,
   "projectFilePath": "C:\\Users\\Nahu\\Desktop\\proyectoDotNet\\CentroEventos\\CentroEventos.Repositorios\\CentroEventos.Repositorios.csproj",
   "expectedPackageFiles": [],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1108",
+      "level": "Error",
+      "message": "Ciclo detectado. \r\n  CentroEventos.Repositorios -> CentroEventos.Consola -> CentroEventos.Repositorios.",
+      "libraryId": "CentroEventos.Repositorios",
+      "targetGraphs": [
+        "net9.0"
+      ]
+    }
+  ]
 }

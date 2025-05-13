@@ -9,19 +9,9 @@ public class EventoDeportivo
     public int CupoMaximo {get;set;}
     public int ResponsbleID {get;set;}
 
-    public EventoDeportivo()
-    {
-        Nombre = string.Empty;
-        Descripcion =  string.Empty;
-        FechaHoraInicio = 0;
-        DuracionHoras = 0;
-        CupoMaximo = 0;
-        ResponsbleID = 0;
-    }
-
     public override string ToString()
     {
-        return $"ID:{ID}\n"+ 
+        return $"ID:{Id}\n"+ 
                $"Nombre:{Nombre}\n" + 
                $"Descripcion:{Descripcion}\n" +
                $"FechaHoraInicio:{FechaHoraInicio}\n" +

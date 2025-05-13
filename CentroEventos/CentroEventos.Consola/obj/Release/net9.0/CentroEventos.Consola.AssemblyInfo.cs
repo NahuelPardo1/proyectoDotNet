@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CentroEventos.Consola")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f9abdc0b4e90becb9736c8853b8c2beeaea355a6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3047fa9e438933173375087566fa900c6db46f0d")]
 [assembly: System.Reflection.AssemblyProductAttribute("CentroEventos.Consola")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CentroEventos.Consola")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
