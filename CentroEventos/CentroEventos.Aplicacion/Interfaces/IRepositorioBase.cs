@@ -7,4 +7,5 @@ public interface IRepositorioBase<T>
     void Eliminar(int id);
     List<T> Listar();
     T ObtenerPorID(int id);
+    
 }
