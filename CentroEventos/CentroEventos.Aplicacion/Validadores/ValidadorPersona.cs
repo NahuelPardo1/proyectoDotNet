@@ -12,22 +12,22 @@ public class ValidadorPersona
     public bool Validador(Persona persona, out string mensaje)
     {
         mensaje = "";
-        if (string.isNullOrEmptySpace(persona.Nombre))
+        if (string.IsNullOrWhiteSpace(persona.Nombre))
         {
             mensaje += "El nombre no puede estar vacio \n";
         }
 
-        if (string.isNullOrEmptySpace(persona.Apellido))
+        if (string.IsNullOrWhiteSpace(persona.Apellido))
         {
             mensaje += "El apellido no puede estar vacio \n";
         }
 
-        if (string.isNullOrEmptySpace(persona.DNI))
+        if (string.IsNullOrWhiteSpace(persona.DNI))
         {
             mensaje += "El DNI no puede estar vacio \n";
         }
 
-        if (string.isNullOrEmptySpace(persona.Email))
+        if (string.IsNullOrWhiteSpace(persona.Email))
         {
             mensaje += "El email no puede estar vacio \n";
         }
