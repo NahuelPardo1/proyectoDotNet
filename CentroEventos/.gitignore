@@ -1,2 +1,16 @@
-.vs/
+# Ignorar archivos y carpetas generadas por compilación
+**/bin/
+**/obj
+*.dll
+*.exe
+*.pdb
+
+# Ignorar configuraciones del IDE
 .idea/
+.vs/
+*.user
+*.suo
+
+# Ignorar salida de compilación en modo Debug y Release
+Debug/
+Release/
