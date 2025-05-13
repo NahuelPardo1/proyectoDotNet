@@ -1,6 +1,6 @@
 ﻿using CentroEventos.Aplicacion;
 
-namespace CentroEvento.Aplicacion.Validadores;
+namespace CentroEvento.Aplicacion;
 
 public class ValidadorEventoDeportivo
 {
