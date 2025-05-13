@@ -1,5 +1,13 @@
-﻿################################################################################
-# Este archivo .gitignore ha sido creado automáticamente por Microsoft(R) Visual Studio.
-################################################################################
+﻿# Ignorar archivos y carpetas generadas por compilación
 
-/.vs
+**/bin/
+**/obj/
+*.dll
+*.exe
+*.pdb
+
+# Ignorar configuraciones del IDE
+# Visual Studio y Rider 
+.idea/
+.vs/
+
