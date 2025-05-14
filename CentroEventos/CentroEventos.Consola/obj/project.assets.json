@@ -16,7 +16,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
-          "CentroEventos.Consola": "1.0.0"
+          "CentroEventos.Aplicacion": "1.0.0"
         },
         "compile": {
           "bin/placeholder/CentroEventos.Repositorios.dll": {}
@@ -121,16 +121,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1108",
-      "level": "Error",
-      "message": "Ciclo detectado. \r\n  CentroEventos.Consola -> CentroEventos.Repositorios -> CentroEventos.Consola.",
-      "libraryId": "CentroEventos.Consola",
-      "targetGraphs": [
-        "net9.0"
-      ]
-    }
-  ]
+  }
 }

@@ -1,18 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JZGZ/58Xyf4=",
-  "success": false,
+  "dgSpecHash": "jeUWyJaUwuo=",
+  "success": true,
   "projectFilePath": "C:\\Users\\Nahu\\Desktop\\proyectoDotNet\\CentroEventos\\CentroEventos.Consola\\CentroEventos.Consola.csproj",
   "expectedPackageFiles": [],
-  "logs": [
-    {
-      "code": "NU1108",
-      "level": "Error",
-      "message": "Ciclo detectado. \r\n  CentroEventos.Consola -> CentroEventos.Repositorios -> CentroEventos.Consola.",
-      "libraryId": "CentroEventos.Consola",
-      "targetGraphs": [
-        "net9.0"
-      ]
-    }
-  ]
+  "logs": []
 }
