@@ -8,7 +8,7 @@ public class Reserva
     public int PersonaId { get; set; }
     public int EventoDeportivoId { get; set; }
     public DateTime FechaAltaReserva { get; set; }
-    public Permiso EstadoReserva { get; set; }
+    public Estado EstadoReserva { get; set; }
     
     public override string ToString()
     {
