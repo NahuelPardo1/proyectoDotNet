@@ -1,6 +1,4 @@
-namespace CentroEventos.Aplicacion.CasosDeUsos
-using CentroEventos.Aplicacion;
-{
+namespace CentroEventos.Aplicacion;
     public class PersonaAltaUseCase
     {
         private readonly IRepositorioPersona _repositorioPersona;
@@ -19,4 +17,3 @@ using CentroEventos.Aplicacion;
              _repositorioPersona.Agregar(persona);
          }
     }
-}
