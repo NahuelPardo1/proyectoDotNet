@@ -7,9 +7,10 @@ public class Persona
     public string Apellido { get; set; } 
     public string Email { get; set; }
     public string Telefono { get; set; }
+    public List<Permiso> Permisos { get; set; } = new List<Permiso>();
 
     public override string ToString()
     {
-        return $"[{Id}] {Nombre} {Apellido} - DNI: {DNI} - Email: {Email} - Tel: {Telefono}";
+        return $"[{Id}] {Nombre} {Apellido} - DNI: {DNI} - Email: {Email} - Tel: {Telefono} - Permisos: {Permisos}";
     }
 }
