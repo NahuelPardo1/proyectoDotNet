@@ -5,7 +5,7 @@ namespace CentroEventos.Aplicacion.Servicios
 	{
 		public bool PoseeElPermiso(int IdUsuario, Permiso permiso)
 		{
-			return IdUsuario == 1
+			return IdUsuario == 1;
 		}
 	}
 }
