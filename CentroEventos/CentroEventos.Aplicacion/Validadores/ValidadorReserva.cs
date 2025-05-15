@@ -18,6 +18,7 @@ public class ValidadorReserva
         if(_repositorioR.ObtenerPorPersonaYEvento(reserva.PersonaId, reserva.EventoDeportivoId) != null)
         {
             mensaje += "Ya existe una reserva para esta persona en este evento deportivo \n";
+            throw new 
         }
         var reservas = _repositorioR.ObtenerPorEvento(reserva.EventoDeportivoId);
         var evento = _repositorioED.ObtenerPorID(reserva.EventoDeportivoId);

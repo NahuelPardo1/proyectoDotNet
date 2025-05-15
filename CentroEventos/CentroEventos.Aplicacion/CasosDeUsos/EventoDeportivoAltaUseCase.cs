@@ -1,5 +1,4 @@
-using System;
-using System.Threading;
+
 
 namespace CentroEventos.Aplicacion;
 
@@ -16,12 +15,12 @@ public class EventoDeportivoAltaUseCase {
         _repositorioPersona = repositorioPersona;
         _servicioAutorizacion = servicioAutorizacion;
     }
-    public void Ejecutar(EventoDeportivo eDeportivo)
+    public void Ejecutar(EventoDeportivo eDeportivo,int )
     {
         DateTime fechaActual = DateTime.Now;
         if(eDeportivo.FechaHoraInicio < fechaActual)
         {
-            throw new ValidacionException("La fecha de inicio no puede ser menor a la fecha actual");
+            throw new OperacionInvalidaException("La fecha de inicio no puede ser menor a la fecha actual");
         }
         if (_servicioAutorizacion.PoseeElServicio(eDeportivo.ResponsbleID,Permiso.EventoAlta ) == false)
         {

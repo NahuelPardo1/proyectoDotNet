@@ -28,11 +28,11 @@ public class ValidadorEventoDeportivo
         {
             msgError += "Cupo maximo del evento deportivo no puede ser menor a 0.\n";
         }
-        
+
         if (_Rpersona.ObtenerPorID(eDeportivo.ResponsbleID)==null)
         {
             msgError+= "Responsable del evento deportivo no existe.\n";
-            throw new EntidadNotFoundException()
+            throw new EntidadNotFoundException();
         }
         return msgError == "";
     }
