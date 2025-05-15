@@ -2,15 +2,11 @@ namespace CentroEventos.Aplicacion;
 public class ReservaAltaUseCase
 {
     private readonly IRepositorioReserva _repositorioReserva;
-    private readonly IRepositorioPersona _repositorioPersona;
-    private readonly IRepositorioEventoDeportivo _repositorioEventoDeportivo;
     private readonly IServicioAutorizacion _servicioAutorizacion;
 
-    public ReservaAltaUseCase(IRepositorioReserva repositorioReserva, IRepositorioPersona repositorioPersona,IServicioAutorizacion servicioAutorizacion , IRepositorioEventoDeportivo repositorioEventoDeportivo)
+    public ReservaAltaUseCase(IRepositorioReserva repositorioReserva,IServicioAutorizacion servicioAutorizacion)
     {
         _repositorioReserva = repositorioReserva;
-        _repositorioPersona = repositorioPersona;
-        _repositorioEventoDeportivo = repositorioEventoDeportivo;
         _servicioAutorizacion = servicioAutorizacion;
     }
     public void Ejecutar(Reserva datos, int IdUsuario)
