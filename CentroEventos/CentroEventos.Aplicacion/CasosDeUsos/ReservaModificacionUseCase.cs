@@ -9,7 +9,7 @@ public class ReservaModificacionUseCase;
         _repositorioReserva = repositorioReserva;
         _servicioAutorizacion = servicioAutorizacion;
     }
-    public void Ejcutar(int idReserva, Reserva reserva, int idUsuario)
+    public void Ejecutar(int idReserva, Reserva reserva, int idUsuario)
     {
         // 1. Verificar permiso
         if (! _servicioAutorizacion.PoseeElPermiso(idUsuario, Permiso.ReservaModificacion))
