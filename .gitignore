@@ -10,4 +10,5 @@
 # Visual Studio y Rider 
 .idea/
 .vs/
+CentroEventos.Aplicacion.AssemblyInfo.cs
 
