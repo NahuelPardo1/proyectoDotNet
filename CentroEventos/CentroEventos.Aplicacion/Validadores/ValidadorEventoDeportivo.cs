@@ -1,6 +1,6 @@
 ﻿using CentroEventos.Aplicacion;
 
-namespace CentroEvento.Aplicacion.Validadores;
+namespace CentroEvento.Aplicacion;
 
 public class ValidadorEventoDeportivo
 {
@@ -32,6 +32,7 @@ public class ValidadorEventoDeportivo
         if (_Rpersona.ObtenerPorID(eDeportivo.ResponsbleID)==null)
         {
             msgError+= "Responsable del evento deportivo no existe.\n";
+            throw new EntidadNotFoundException()
         }
         return msgError == "";
     }
