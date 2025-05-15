@@ -2,8 +2,7 @@ namespace CentroEventos.Aplicacion;
 public class PersonaModificacionUseCase
 {
     private readonly IRepositorioPersona repositorioPersona;
-    private readonly IServicioAutorizacion servicioAutorizacion;
-    private readonly Permiso permisoUsuarioModificacion = Permiso.UsuarioModificacion;
+    private readonly IServicioAutorizacion servicioAutorizacion
     public PersonaModificacionUseCase(IRepositorioPersona repositorioPersona, IServicioAutorizacion servicioAutorizacion)
     {
         this.repositorioPersona = repositorioPersona;
@@ -11,18 +10,16 @@ public class PersonaModificacionUseCase
     }
     public void Ejecutar(Persona persona)
     {
-        if(servicioAutorizacion.PoseeElPermiso(persona.Id, permisoUsuarioModificacion))
+        if(servicioAutorizacion.PoseeElPermiso(persona.Id, Permiso.UsuarioModificacion))
         {
-            ValidadorPersona validador = new ValidadorPersona(repositorioPersona);
-            if (!validador.Validador(persona, out string msj))
-            {
-                throw new ValidacionException(msj);
-            }
-            repositorioPersona.Modificar(persona);
+            throw new FalloAutorizacionException("El usuario no posee el permiso para relizar esta acción");
         }
-        else
+
+        ValidadorPersona validador = new ValidadorPersona(repositorioPersona);
+        if (!validador.Validador(persona, out string msj))
         {
-            throw new FalloAutorizacionException();
+            throw new ValidacionException(msj);
         }
+        repositorioPersona.Modificar(persona)
     }
 }

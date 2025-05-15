@@ -2,8 +2,7 @@ namespace CentroEventos.Aplicacion;
 public class PersonaListadoUseCase
 {
     private readonly IRepositorioPersona _repositorioPersona;
-    private readonly IServicioAutorizacion _servicioAutorizacion;
-    private readonly Permiso _permisoUsuarioListado = Permiso.UsuarioListado;
+    private readonly IServicioAutorizacion _servicioAutorizacion
     public PersonaListadoUseCase(IRepositorioPersona repositorioPersona, IServicioAutorizacion servicioAutorizacion)
     {
         _repositorioPersona = repositorioPersona;
@@ -11,13 +10,10 @@ public class PersonaListadoUseCase
     }
     public List<Persona> Ejecutar(int idUsuario)
     {
-        if (_servicioAutorizacion.PoseeElPermiso(idUsuario, _permisoUsuarioListado))
+        if (_servicioAutorizacion.PoseeElPermiso(idUsuario, Permiso.UsuarioListado))
         {
-            return _repositorioPersona.Listar();
+            throw new FalloAutorizacionException("El usuario no posee el permiso para relizar esta acción");
         }
-        else
-        {
-            throw new FalloAutorizacionException();
-        }
+         return _repositorioPersona.Listar();
     }
 }
