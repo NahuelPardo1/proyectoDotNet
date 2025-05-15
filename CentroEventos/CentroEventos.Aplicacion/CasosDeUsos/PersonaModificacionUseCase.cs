@@ -8,18 +8,32 @@ public class PersonaModificacionUseCase
         this.repositorioPersona = repositorioPersona;
         this.servicioAutorizacion = servicioAutorizacion;
     }
-    public void Ejecutar(Persona persona)
+    public void Ejecutar(int IdPesonaAModificar, Persona personaModificada, int IdUsuario )
     {
-        if(servicioAutorizacion.PoseeElPermiso(persona.Id, Permiso.UsuarioModificacion))
+        // 1. Verificar permiso
+        if (servicioAutorizacion.PoseeElPermiso(IdUsuario, Permiso.UsuarioModificacion))
         {
             throw new FalloAutorizacionException("El usuario no posee el permiso para relizar esta acción");
         }
 
+        // 2. Verificar existencia de la persona
+        Persona persona = repositorioPersona.ObtenerPorId(IdPesonaAModificar);
+        if (persona == null)
+        {
+            throw new EntidadNotFoundException("La persona a modificar no existe");
+        }
+
+        // 3. Validad datos
         ValidadorPersona validador = new ValidadorPersona(repositorioPersona);
-        if (!validador.Validador(persona, out string msj))
+        if (!validador.Validador(personaModificada, out string msj))
         {
             throw new ValidacionException(msj);
         }
-        repositorioPersona.Modificar(persona)
+
+        // 4. Actualizar ID 
+        personaModificada.Id = IdPesonaAModificar;
+
+        // 5. Modificar 
+        repositorioPersona.Modificar(personaModificada);
     }
 }
