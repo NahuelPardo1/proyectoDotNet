@@ -30,7 +30,7 @@ public class PersonaModificacionUseCase
             throw new ValidacionException(msj);
         }
 
-        // 4. Actualizar ID 
+        // 4. Actualizar ID para asegurar que se mantenga el orden
         personaModificada.Id = IdPesonaAModificar;
 
         // 5. Modificar 
