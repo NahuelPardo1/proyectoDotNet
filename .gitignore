@@ -9,6 +9,5 @@
 # Ignorar configuraciones del IDE
 # Visual Studio y Rider 
 .idea/
-.vs/
-CentroEventos.Aplicacion.AssemblyInfo.cs
-
+.vs
+CentroEventos/CentroEventos.Aplicacion/obj
