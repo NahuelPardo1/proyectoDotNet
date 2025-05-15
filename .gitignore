@@ -1,13 +1,16 @@
 ﻿# Ignorar archivos y carpetas generadas por compilación
-
 **/bin/
-**/obj/
+**/obj
 *.dll
 *.exe
 *.pdb
 
 # Ignorar configuraciones del IDE
-# Visual Studio y Rider 
 .idea/
-.vs
-CentroEventos/CentroEventos.Aplicacion/obj
+.vs/
+*.user
+*.suo
+
+# Ignorar salida de compilación en modo Debug y Release
+Debug/
+Release/
