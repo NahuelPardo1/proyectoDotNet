@@ -15,18 +15,21 @@ public class EventoDeportivoAltaUseCase {
         _repositorioPersona = repositorioPersona;
         _servicioAutorizacion = servicioAutorizacion;
     }
-    public void Ejecutar(EventoDeportivo eDeportivo,int )
+    public void Ejecutar(EventoDeportivo eDeportivo,int idUsuario)
     {
+        if (_servicioAutorizacion.PoseeElPermiso(idUsuario, Permiso.EventoAlta) == false)
+        {
+            throw new FalloAutorizacionException("El responsable no posee el permiso para realizar esta accion");
+        }
+        if(_repositorioPersona.ObtenerPorID(eDeportivo.ResponsableID) == null)
+        {
+            throw new EntidadNotFoundException("El responsable no existe");
+        }
         DateTime fechaActual = DateTime.Now;
         if(eDeportivo.FechaHoraInicio < fechaActual)
         {
             throw new OperacionInvalidaException("La fecha de inicio no puede ser menor a la fecha actual");
         }
-        if (_servicioAutorizacion.PoseeElServicio(eDeportivo.ResponsbleID,Permiso.EventoAlta ) == false)
-        {
-            throw new FalloAutorizacionException("El responsable no posee el permiso para realizar esta accion");
-        }
-        
         ValidadorEventoPersona validador = new ValidadorEventoPersona(_repositorioPersona);
         if(validador.Validar(eDeportivo, out string msgError))
         {

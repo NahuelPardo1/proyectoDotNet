@@ -13,7 +13,6 @@ public class ValidadorReserva
         if(_repositorioED.ObtenerPorID(reserva.EventoDeportivoId) == null)
         {
             mensaje += "El ID del evento deportivo no existe \n";
-            throw new EntidadNotFoundException()
         }
         if(_repositorioR.ObtenerPorPersonaYEvento(reserva.PersonaId, reserva.EventoDeportivoId) != null)
         {
