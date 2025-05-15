@@ -1,13 +1,14 @@
-﻿# Ignorar archivos y carpetas generadas por compilación
-
-**/bin/
-**/obj/
+﻿# Ig# Ignorar archivos y carpetas generadas por compilación
+bin/
+obj/
 *.dll
 *.exe
 *.pdb
 
 # Ignorar configuraciones del IDE
-# Visual Studio y Rider 
 .idea/
 .vs/
-
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
