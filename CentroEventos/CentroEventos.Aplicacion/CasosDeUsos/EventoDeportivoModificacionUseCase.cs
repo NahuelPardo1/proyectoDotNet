@@ -33,10 +33,11 @@ public class EventoDeportivoModificacionUseCase
         ValidadorEventoDeportivo validador = new ValidadorEventoDeportivo(_repositorioPersona);
         if (validador.Validar(e, out string msgError))
         {
-            _repositorioEventoDeportivo.Modificar(e,idEvento);
+            _repositorioEventoDeportivo.Modificar(e, idEvento);
         }
         else
         {
             throw new ValidacionException(msgError);
         }
     }
+}

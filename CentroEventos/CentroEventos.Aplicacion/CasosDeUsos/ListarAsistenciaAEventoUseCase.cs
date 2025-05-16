@@ -12,12 +12,14 @@ namespace CentroEventos.Aplicacion
             _repositorioReserva = repositorioReserva;
         }
 
-        public List<Persona> Ejecutar(EventoDeportivo e) {
+        public List<Persona> Ejecutar(EventoDeportivo e)
+        {
             List<Persona> asistentes = new List<Persona>();
             List<Reserva> reservas = _repositorioReserva.ObtenerPorEvento(e.Id);
             foreach (Reserva reserva in reservas)
             {
-                if (reserva.EstadoReserva == Estado.Presente) {
+                if (reserva.EstadoReserva == Estado.Presente)
+                {
                     Persona persona = _repositorioPersona.ObtenerPorID(reserva.PersonaId);
                     if (persona != null)
                     {
@@ -29,3 +31,4 @@ namespace CentroEventos.Aplicacion
             return asistentes;
         }
     }
+}

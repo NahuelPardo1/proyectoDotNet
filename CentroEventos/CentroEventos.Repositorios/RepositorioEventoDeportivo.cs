@@ -42,20 +42,90 @@ public class RepositorioEventoDeportivo: IRepositorioEventoDeportivo
         StreamWriter sw = new StreamWriter(_ruta, append: true);
         sw.WriteLine(evento.ToString());
         sw.Close();
+        Console.WriteLine($"Evento Deportivo {evento.Nombre} agregado con ID {evento.Id}.");
     }
     public List<EventoDeportivo> Listar()
     {
         List<EventoDeportivo> eventos = new List<EventoDeportivo>();
-        StreamReader sr = new StreamReader(_ruta);
-        string linea;
+        EventoDeportivo evento = new EventoDeportivo();
+        using StreamReader sr = new StreamReader(_ruta);
         while (!sr.EndOfStream)
         {
-            linea = sr.ReadLine();
-            string[] parte = linea.Split('|');
-            EventoDeportivo evento = new EventoDeportivo();
-
-
+            evento.Id = int.Parse(sr.ReadLine());
+            evento.Nombre = sr.ReadLine();
+            evento.Descripcion = sr.ReadLine();
+            evento.FechaHoraInicio = DateTime.Parse(sr.ReadLine());
+            evento.DuracionHoras = double.Parse(sr.ReadLine());
+            evento.CupoMaximo = int.Parse(sr.ReadLine());
+            evento.ResponsbleID = int.Parse(sr.ReadLine());
+            eventos.Add(evento);
         }
         return eventos;
+    }
+    public void Modificar(EventoDeportivo evento, int id)
+    {
+        List<EventoDeportivo> eventos = Listar();
+        for (int i = 0; i < eventos.Count; i++)
+        {
+            if (eventos[i].Id == id)
+            {
+                evento.Id = id; // mantener el ID original
+                eventos[i] = evento;
+                break;
+            }
+        }
+        // rescribir el archivo completo 
+        using StreamWriter sw = new StreamWriter(_ruta);
+        foreach(EventoDeportivo e in eventos)
+        {
+            sw.WriteLine(e.ToString());
+        }
+        sw.Close();
+        Console.WriteLine($"Evento Deportivo {evento.Nombre} modificado con ID {evento.Id}.");
+    }
+    public void Eliminar(int id)
+    {
+        List<EventoDeportivo> eventos = Listar();
+        for (int i = 0; i < eventos.Count; i++)
+        {
+            if (eventos[i].Id == id)
+            {
+                eventos.RemoveAt(i);
+                break;
+            }
+        }
+        // rescribir el archivo completo 
+        using StreamWriter sw = new StreamWriter(_ruta);
+        foreach(EventoDeportivo e in eventos)
+        {
+            sw.WriteLine(e.ToString());
+        }
+        Console.WriteLine($"Evento Deportivo con ID {id} eliminado.");
+    }
+
+    public EventoDeportivo? ObtenerPorID(int id)
+    {
+        List<EventoDeportivo> eventos = Listar();
+        foreach (EventoDeportivo evento in eventos)
+        {
+            if (evento.Id == id)
+            {
+                return evento;
+            }
+        }
+        return null;
+    }
+    public List<EventoDeportivo> ObtenerPorPersona(int personaId)
+    {
+        List<EventoDeportivo> eventos = Listar();
+        List<EventoDeportivo> eventosPorPersona = new List<EventoDeportivo>();
+        foreach (EventoDeportivo evento in eventos)
+        {
+            if (evento.ResponsbleID == personaId)
+            {
+                eventosPorPersona.Add(evento);
+            }
+        }
+        return eventosPorPersona;
     }
 }
