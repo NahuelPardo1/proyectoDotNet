@@ -1,15 +1,17 @@
 namespace CentroEvento.Aplicacion;
+using CentroEventos.Aplicacion;
+
 public class ReservaBajaUseCase
 {
-    private readonly IRespositorioReserva _repositorioReserva;
+    private readonly IRepositorioReserva _repositorioReserva;
     private readonly IServicioAutorizacion _servicioAutorizacion;
     
-    public ReservaBajaUseCase(IRespositorioReserva repositorioReserva, IServicioAutorizacion servicioAutorizacion)
+    public ReservaBajaUseCase(IRepositorioReserva repositorioReserva, IServicioAutorizacion servicioAutorizacion)
     {
         _repositorioReserva = repositorioReserva;
         _servicioAutorizacion = servicioAutorizacion;
     }
-    public void Ejecutar(Reserva reservaBaja, int IdUsuario)
+    public void Ejecutar(int reservaBaja, int IdUsuario)
     {
         // 1. Verificar permiso 
         if (! _servicioAutorizacion.PoseeElPermiso(IdUsuario, Permiso.ReservaBaja))
@@ -17,13 +19,13 @@ public class ReservaBajaUseCase
             throw new FalloAutorizacionException("El usuario no posee el permiso para realizar esta acción");
         }
         // 2. Verificar existencia de la reserva
-        Reserva reserva = _repositorioReserva.ObtenerPorID(reservaBaja.IdReserva);
+        Reserva? reserva = _repositorioReserva.ObtenerPorID(reservaBaja);
         if (reserva == null)
         {
             throw new EntidadNotFoundException("La reserva no existe");
         }
         // . Dar de baja a la reserva
-        _repositorioReserva.Baja(reservaBaja);
+        _repositorioReserva.Eliminar(reservaBaja);
     }
 
 }

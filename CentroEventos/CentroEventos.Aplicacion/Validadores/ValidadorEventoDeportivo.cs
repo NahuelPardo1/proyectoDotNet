@@ -1,5 +1,5 @@
 ﻿namespace CentroEvento.Aplicacion;
-
+using CentroEventos.Aplicacion;
 public class ValidadorEventoDeportivo
 {
 	private readonly IRepositorioPersona _Rpersona;

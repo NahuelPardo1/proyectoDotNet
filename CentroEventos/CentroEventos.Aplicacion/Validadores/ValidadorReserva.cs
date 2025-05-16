@@ -4,6 +4,12 @@ public class ValidadorReserva
     private readonly IRepositorioPersona _repositorioP;
     private readonly IRepositorioEventoDeportivo _repositorioED;
     private readonly IRepositorioReserva _repositorioR;
+    public ValidadorReserva(IRepositorioPersona repositorioP, IRepositorioEventoDeportivo repositorioED, IRepositorioReserva repositorioR)
+    {
+        _repositorioP = repositorioP;
+        _repositorioED = repositorioED;
+        _repositorioR = repositorioR;
+    }
     public bool Validar(Reserva reserva, out string mensaje)
     {
         mensaje = "";
@@ -20,6 +26,7 @@ public class ValidadorReserva
         }
         var reservas = _repositorioR.ObtenerPorEvento(reserva.EventoDeportivoId);
         var evento = _repositorioED.ObtenerPorID(reserva.EventoDeportivoId);
+
         if (reservas.Count>= evento.CupoMaximo) { 
             mensaje += "No hay cupo disponible para este evento deportivo \n";
         }

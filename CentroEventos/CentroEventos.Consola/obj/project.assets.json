@@ -46,23 +46,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Nahu\\.nuget\\packages\\": {},
+    "C:\\Users\\Yoni\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Nahu\\Desktop\\proyectoDotNet\\CentroEventos\\CentroEventos.Consola\\CentroEventos.Consola.csproj",
+      "projectUniqueName": "C:\\Users\\Yoni\\source\\repos\\NahuelPardo1\\proyectoDotNet\\CentroEventos\\CentroEventos.Consola\\CentroEventos.Consola.csproj",
       "projectName": "CentroEventos.Consola",
-      "projectPath": "C:\\Users\\Nahu\\Desktop\\proyectoDotNet\\CentroEventos\\CentroEventos.Consola\\CentroEventos.Consola.csproj",
-      "packagesPath": "C:\\Users\\Nahu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Nahu\\Desktop\\proyectoDotNet\\CentroEventos\\CentroEventos.Consola\\obj\\",
+      "projectPath": "C:\\Users\\Yoni\\source\\repos\\NahuelPardo1\\proyectoDotNet\\CentroEventos\\CentroEventos.Consola\\CentroEventos.Consola.csproj",
+      "packagesPath": "C:\\Users\\Yoni\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Yoni\\source\\repos\\NahuelPardo1\\proyectoDotNet\\CentroEventos\\CentroEventos.Consola\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Nahu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Yoni\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -78,11 +78,11 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "C:\\Users\\Nahu\\Desktop\\proyectoDotNet\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj": {
-              "projectPath": "C:\\Users\\Nahu\\Desktop\\proyectoDotNet\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj"
+            "C:\\Users\\Yoni\\source\\repos\\NahuelPardo1\\proyectoDotNet\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj": {
+              "projectPath": "C:\\Users\\Yoni\\source\\repos\\NahuelPardo1\\proyectoDotNet\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj"
             },
-            "C:\\Users\\Nahu\\Desktop\\proyectoDotNet\\CentroEventos\\CentroEventos.Repositorios\\CentroEventos.Repositorios.csproj": {
-              "projectPath": "C:\\Users\\Nahu\\Desktop\\proyectoDotNet\\CentroEventos\\CentroEventos.Repositorios\\CentroEventos.Repositorios.csproj"
+            "C:\\Users\\Yoni\\source\\repos\\NahuelPardo1\\proyectoDotNet\\CentroEventos\\CentroEventos.Repositorios\\CentroEventos.Repositorios.csproj": {
+              "projectPath": "C:\\Users\\Yoni\\source\\repos\\NahuelPardo1\\proyectoDotNet\\CentroEventos\\CentroEventos.Repositorios\\CentroEventos.Repositorios.csproj"
             }
           }
         }
@@ -97,7 +97,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.200"
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net9.0": {
@@ -118,7 +118,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

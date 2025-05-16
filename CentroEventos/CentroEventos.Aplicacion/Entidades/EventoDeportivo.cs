@@ -11,12 +11,6 @@ public class EventoDeportivo
 
     public override string ToString()
     {
-        return $"ID:{Id}\n"+ 
-               $"Nombre:{Nombre}\n" + 
-               $"Descripcion:{Descripcion}\n" +
-               $"FechaHoraInicio:{FechaHoraInicio}\n" +
-               $"DuracionHoras:{DuracionHoras}\n" +
-               $"CupoMaximo:{CupoMaximo}\n" +
-               $"ResponsbleID:{ResponsbleID}\n";
+        return $"{Id}|{Nombre}|{Descripcion}|{FechaHoraInicio}|{DuracionHoras}|{CupoMaximo}|{ResponsbleID}";
     }
 }

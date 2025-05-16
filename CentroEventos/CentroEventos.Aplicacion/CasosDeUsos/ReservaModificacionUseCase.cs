@@ -1,13 +1,17 @@
 namespace CentroEventos.Aplicacion;
-public class ReservaModificacionUseCase;
+public class ReservaModificacionUseCase
 {
     private readonly IServicioAutorizacion _servicioAutorizacion;
     private readonly IRepositorioReserva _repositorioReserva;
-    
-    public ReservaModificacionUseCase(IRepositorioReserva repositorioReserva, IServicioAutorizacion servicioAutorizacion)
+    private readonly IRepositorioPersona _repositorioPersona;
+    private readonly IRepositorioEventoDeportivo _repositorioEventoDeportivo;
+
+    public ReservaModificacionUseCase(IRepositorioReserva repositorioReserva, IServicioAutorizacion servicioAutorizacion,IRepositorioPersona repositorioPersona, IRepositorioEventoDeportivo repositorioEventoDeportivo)
     {
         _repositorioReserva = repositorioReserva;
         _servicioAutorizacion = servicioAutorizacion;
+        _repositorioPersona = repositorioPersona;
+        _repositorioEventoDeportivo = repositorioEventoDeportivo;
     }
     public void Ejecutar(int idReserva, Reserva reserva, int idUsuario)
     {
@@ -17,17 +21,17 @@ public class ReservaModificacionUseCase;
             throw new FalloAutorizacionException("El responsable no posee el permiso para realizar esta accion");
         }
         // 2. Verificar existencia de la reserva
-        if (! _repositorioReserva.ObtenerPorID(idReserva))
+        if (_repositorioReserva.ObtenerPorID(idReserva)==null)
         {
             throw new EntidadNotFoundException("La reserva no existe");
         }
         // 3. Verificar si la reserva modificada es valida
-        ValidadorReserva validadorReserva = new ValidadorReserva(_repositorioReserva, out string msj);
-        if (!validadorReserva.Validar(reserva, out msj))
+        ValidadorReserva validadorReserva = new ValidadorReserva(_repositorioPersona, _repositorioEventoDeportivo, _repositorioReserva);
+        if (!validadorReserva.Validar(reserva, out string msj))
         {
             throw new ValidacionException(msj);
         }
         // 4. Modificar reserva
-        _repositorioReserva.Modificar(idReserva, reserva);
+        _repositorioReserva.Modificar(reserva,idReserva);
     }
 }
