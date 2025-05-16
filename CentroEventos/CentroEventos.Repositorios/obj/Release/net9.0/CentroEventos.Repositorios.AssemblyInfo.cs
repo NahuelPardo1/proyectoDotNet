@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CentroEventos.Repositorios")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c88ed9b20ae25825c3467028d6ab791fb56eb669")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4e3504e92178bb90213b49941a982e348233d733")]
 [assembly: System.Reflection.AssemblyProductAttribute("CentroEventos.Repositorios")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CentroEventos.Repositorios")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
