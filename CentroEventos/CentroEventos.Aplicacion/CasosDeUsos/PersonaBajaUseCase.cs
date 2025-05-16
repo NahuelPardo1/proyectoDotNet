@@ -21,7 +21,7 @@ public class PersonaBajaUseCase
             throw new FalloAutorizacionException("El usuario no posee el permiso para relizar esta acción");
         }
         // 2. Verificar existencia de la persona
-        Persona persona = _repositorioPersona.ObtenerPorID(IDBaja); 
+        Persona? persona = _repositorioPersona.ObtenerPorID(IDBaja); 
         if (persona == null)
         {
             throw new EntidadNotFoundException("La persona a eliminar no existe"); 

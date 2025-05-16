@@ -8,14 +8,8 @@ public class PersonaListadoUseCase
         _repositorioPersona = repositorioPersona;
         _servicioAutorizacion = servicioAutorizacion;
     }
-    public List<Persona> Ejecutar(int idUsuario)
+    public List<Persona> Ejecutar()
     {
-        // 1. Verificar permiso
-        if (_servicioAutorizacion.PoseeElPermiso(idUsuario, Permiso.UsuarioListado))
-        {
-            throw new FalloAutorizacionException("El usuario no posee el permiso para relizar esta acción");
-        }
-        // 2. Listar personas
         return _repositorioPersona.Listar();
     }
 }

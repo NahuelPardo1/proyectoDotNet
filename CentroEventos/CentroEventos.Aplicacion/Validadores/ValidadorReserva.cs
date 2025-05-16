@@ -4,6 +4,12 @@ public class ValidadorReserva
     private readonly IRepositorioPersona _repositorioP;
     private readonly IRepositorioEventoDeportivo _repositorioED;
     private readonly IRepositorioReserva _repositorioR;
+    public ValidadorReserva(IRepositorioPersona repositorioP, IRepositorioEventoDeportivo repositorioED, IRepositorioReserva repositorioR)
+    {
+        _repositorioP = repositorioP;
+        _repositorioED = repositorioED;
+        _repositorioR = repositorioR;
+    }
     public bool Validar(Reserva reserva, out string mensaje)
     {
         mensaje = "";

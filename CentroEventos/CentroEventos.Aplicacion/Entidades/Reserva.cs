@@ -1,4 +1,4 @@
-﻿using CentroEventos.Aplicacion.Enums;
+﻿using CentroEventos.Aplicacion;
 
 namespace CentroEventos.Aplicacion;
 
