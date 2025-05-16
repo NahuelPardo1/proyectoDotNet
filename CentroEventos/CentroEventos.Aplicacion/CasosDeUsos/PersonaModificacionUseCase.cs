@@ -2,7 +2,7 @@ namespace CentroEventos.Aplicacion;
 public class PersonaModificacionUseCase
 {
     private readonly IRepositorioPersona repositorioPersona;
-    private readonly IServicioAutorizacion servicioAutorizacion
+    private readonly IServicioAutorizacion servicioAutorizacion;
     public PersonaModificacionUseCase(IRepositorioPersona repositorioPersona, IServicioAutorizacion servicioAutorizacion)
     {
         this.repositorioPersona = repositorioPersona;
@@ -17,7 +17,7 @@ public class PersonaModificacionUseCase
         }
 
         // 2. Verificar existencia de la persona
-        Persona persona = repositorioPersona.ObtenerPorId(IdPesonaAModificar);
+        Persona? persona = repositorioPersona.ObtenerPorID(IdPesonaAModificar);
         if (persona == null)
         {
             throw new EntidadNotFoundException("La persona a modificar no existe");
@@ -34,6 +34,6 @@ public class PersonaModificacionUseCase
         personaModificada.Id = IdPesonaAModificar;
 
         // 5. Modificar 
-        repositorioPersona.Modificar(personaModificada);
+        repositorioPersona.Modificar(personaModificada, IdPesonaAModificar);
     }
 }

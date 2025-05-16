@@ -8,7 +8,7 @@ public class PersonaAltaUseCase
         _repositorioPersona = repositorioPersona;
         _servicioAutorizacion = servicioAutorizacion;
     }
-    public void Ejecutar(int IdAlta, int IdUsuario)
+    public void Ejecutar(Persona persona, int IdUsuario)
     {
         // 1. Verificar permiso
         if (! _servicioAutorizacion.PoseeElPermiso(IdUsuario, Permiso.UsuarioAlta))
@@ -19,7 +19,6 @@ public class PersonaAltaUseCase
         ValidadorPersona validador = new ValidadorPersona(_repositorioPersona);
         if (!validador.Validador(persona, out string msj))
         {
-
             throw new ValidacionException(msj);
         }
         // 3. Agregar persona
