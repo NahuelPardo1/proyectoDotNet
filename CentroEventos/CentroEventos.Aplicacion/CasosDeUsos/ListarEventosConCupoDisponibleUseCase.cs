@@ -1,6 +1,7 @@
 namespace CentroEventos.Aplicacion;
+using CentroEventos.Aplicacion;
 
-public ListarEventosConCupoDisponibleUseCase{
+public class ListarEventosConCupoDisponibleUseCase{
     private readonly IRepositorioEventoDeportivo _repositorioEventoDeportivo;
     private readonly IRepositorioReserva _repositorioReserva;
 
@@ -12,7 +13,7 @@ public ListarEventosConCupoDisponibleUseCase{
 
 public List<EventoDeportivo> Ejecutar() { 
     List<EventoDeportivo> eventosConCupo = new List<EventoDeportivo>();
-    List<EventoDeportivo> eventos = _repositorioEventoDeportivo.ObtenerTodos();
+    List<EventoDeportivo> eventos = _repositorioEventoDeportivo.Listar();
     foreach (EventoDeportivo evento in eventos)
     {
         List<Reserva> reservas = _repositorioReserva.ObtenerPorEvento(evento.Id);

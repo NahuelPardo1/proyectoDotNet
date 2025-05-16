@@ -24,7 +24,7 @@ public class EventoDeportivoBajaUseCase
         {
             throw new EntidadNotFoundException("El evento deportivo no existe");
         }
-        List<Reserva> reservas = _repositorioR.ObtenerReservasPorEvento(idEvento);
+        List<Reserva> reservas = _repositorioR.ObtenerPorEvento(idEvento);
         if (reservas.Count > 0)
         {
             throw new OperacionInvalidaException("No se puede eliminar el evento deportivo porque tiene reservas asociadas");

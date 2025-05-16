@@ -1,4 +1,6 @@
-﻿namespace CentroEvento.Aplicacion;
+﻿using CentroEventos.Aplicacion;
+
+namespace CentroEvento.Aplicacion;
 
 public class ValidadorEventoDeportivo
 {

@@ -1,3 +1,4 @@
+using CentroEvento.Aplicacion;
 using System;
 
 namespace CentroEventos.Aplicacion;
@@ -29,10 +30,10 @@ public class EventoDeportivoModificacionUseCase
         {
             throw new OperacionInvalidaException("La fecha de inicio no puede ser menor a la fecha actual");
         }
-        ValidadorEventoPersona validador = new ValidadorEventoPersona(_repositorioPersona);
+        ValidadorEventoDeportivo validador = new ValidadorEventoDeportivo(_repositorioPersona);
         if (validador.Validar(e, out string msgError))
         {
-            _repositorioEventoDeportivo.Modificar(idEvento, e);
+            _repositorioEventoDeportivo.Modificar(e,idEvento);
         }
         else
         {

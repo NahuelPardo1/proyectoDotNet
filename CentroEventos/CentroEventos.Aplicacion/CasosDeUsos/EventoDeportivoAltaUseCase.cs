@@ -22,7 +22,7 @@ public class EventoDeportivoAltaUseCase
         {
             throw new FalloAutorizacionException("El responsable no posee el permiso para realizar esta accion");
         }
-        if (_repositorioPersona.ObtenerPorID(eDeportivo.ResponsableID) == null)
+        if (_repositorioPersona.ObtenerPorID(eDeportivo.ResponsbleID) == null)
         {
             throw new EntidadNotFoundException("El responsable no existe");
         }
@@ -31,7 +31,7 @@ public class EventoDeportivoAltaUseCase
         {
             throw new OperacionInvalidaException("La fecha de inicio no puede ser menor a la fecha actual");
         }
-        ValidadorEventoPersona validador = new ValidadorEventoPersona(_repositorioPersona);
+        ValidadorEventoDeportivo validador = new ValidadorEventoDeportivo(_repositorioPersona);
         if (validador.Validar(eDeportivo, out string msgError))
         {
             _repositorioEventoDeportivo.Agregar(eDeportivo);

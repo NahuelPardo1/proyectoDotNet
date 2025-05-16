@@ -8,7 +8,7 @@ public class PersonaAltaUseCase
         _repositorioPersona = repositorioPersona;
         _servicioAutorizacion = servicioAutorizacion;
     }
-    public void Ejecutar(int IdAlta, int IdUsuario)
+    public void Ejecutar(Persona persona, int IdUsuario)
     {
         // 1. Verificar permiso
         if (! _servicioAutorizacion.PoseeElPermiso(IdUsuario, Permiso.UsuarioAlta))

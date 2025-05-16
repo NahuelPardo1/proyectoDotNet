@@ -1,7 +1,7 @@
 namespace CentroEventos.Aplicacion;
 public class PersonaBajaUseCase
 {
-    private readonly IRepositorioPersona _repositorioPersona
+    private readonly IRepositorioPersona _repositorioPersona;
     private readonly IServicioAutorizacion _servicioAutorizacion;
     private readonly IRepositorioEventoDeportivo _repositorioEventoDeportivo;
     private readonly IRepositorioReserva _repositorioReserva;
@@ -21,7 +21,7 @@ public class PersonaBajaUseCase
             throw new FalloAutorizacionException("El usuario no posee el permiso para relizar esta acción");
         }
         // 2. Verificar existencia de la persona
-        Persona persona = _repositorioPersona.ObtenerPorId(IDBaja); 
+        Persona persona = _repositorioPersona.ObtenerPorID(IDBaja); 
         if (persona == null)
         {
             throw new EntidadNotFoundException("La persona a eliminar no existe"); 
