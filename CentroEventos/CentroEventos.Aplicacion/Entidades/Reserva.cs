@@ -1,6 +1,4 @@
-﻿using CentroEventos.Aplicacion.Enums;
-
-namespace CentroEventos.Aplicacion;
+﻿namespace CentroEventos.Aplicacion;
 
 public class Reserva
 {

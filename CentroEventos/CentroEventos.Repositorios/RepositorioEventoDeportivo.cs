@@ -47,6 +47,16 @@ public class RepositorioEventoDeportivo: IRepositorioEventoDeportivo
     public List<EventoDeportivo> Listar()
     {
         List<EventoDeportivo> eventos = new List<EventoDeportivo>();
+        StreamReader sr = new StreamReader(_ruta);
+        string linea;
+        while (!sr.EndOfStream)
+        {
+            linea = sr.ReadLine();
+            string[] parte = linea.Split('|');
+            EventoDeportivo evento = new EventoDeportivo();
+
+
+        }
         return eventos;
     }
 }
