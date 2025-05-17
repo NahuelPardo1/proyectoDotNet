@@ -1,0 +1,150 @@
+namespace CentroEventos.Repositorio;
+
+using CentroEventos.Aplicacion;
+
+public class RepositorioReserva : IRepositorioReserva
+{
+    private readonly string _ruta;
+    private readonly string _rutaUltimoId;
+    public RepositorioReserva()
+    {
+        string dirCapeta = Path.Combine(Environment.CurrentDirectory, "DataBase");
+        if (!Directory.Exists(dirCapeta))
+        {
+            Directory.CreateDirectory(dirCapeta);
+        }
+        _ruta = Path.Combine(dirCapeta, "Reservas.txt");
+        _rutaUltimoId = Path.Combine(dirCapeta, "UltimoId.txt");
+    }
+    private int ObtenerUltimoID()
+    {
+        if (!File.Exists(_rutaUltimoId))
+        {
+            File.Create(_rutaUltimoId).Close();
+            return 0;
+        }
+        string ultimoId = File.ReadAllText(_rutaUltimoId);
+        return int.Parse(ultimoId);
+    }
+    private void GuardarUltimoID(int id)
+    {
+        StreamWriter sw = new StreamWriter(_rutaUltimoId);
+        sw.WriteLine(id);
+        sw.Close();
+    }
+    public void Agregar(Reserva reserva)
+    {
+        int UtlimoId = ObtenerUltimoID() + 1;
+        reserva.Id = UtlimoId;
+        GuardarUltimoID(UtlimoId);
+        StreamWriter sw = new StreamWriter(_ruta, append: true);
+        sw.WriteLine(reserva.ToString());
+        sw.Close();
+        Console.WriteLine($"Reserva agregada con ID {reserva.Id}.");
+    }
+    public List<Reserva> Listar()
+    {
+        List<Reserva> reservas = new List<Reserva>();
+        Reserva reserva = new Reserva();
+        using StreamReader sr = new StreamReader(_ruta);
+        while (!sr.EndOfStream)
+        {
+            reserva.Id = int.Parse(sr.ReadLine());
+            reserva.EstadoReserva = (Estado)int.Parse(sr.ReadLine());
+            reserva.PersonaId = int.Parse(sr.ReadLine());
+            reserva.EventoDeportivoId = int.Parse(sr.ReadLine());
+            reserva.FechaAltaReserva = DateTime.Parse(sr.ReadLine());
+            reservas.Add(reserva);
+        }
+        return reservas;
+    }
+    public void Modificar(Reserva reserva, int id)
+    {
+        List<Reserva> reservas = Listar();
+        for (int i = 0; i < reservas.Count; i++)
+        {
+            if (reservas[i].Id == id)
+            {
+                reserva.Id = id;
+                reservas[i] = reserva;
+                break;
+            }
+        }
+        StreamWriter sw = new StreamWriter(_ruta);
+        foreach(Reserva r in reservas)
+        {
+            sw.WriteLine(r.ToString());
+        }
+        sw.Close();
+        Console.WriteLine($"Reserva modificada con ID {reserva.Id}.");
+    }
+    public void Eliminar(int id)
+    {
+        List<Reserva> reservas = Listar();
+        for (int i = 0; i < reservas.Count; i++)
+        {
+            if (reservas[i].Id == id)
+            {
+                reservas.RemoveAt(i);
+                break;
+            }
+        }
+        StreamWriter sw = new StreamWriter(_ruta);
+        foreach (Reserva r in reservas)
+        {
+            sw.WriteLine(r.ToString());
+        }
+        sw.Close();
+        Console.WriteLine($"Reserva eliminada con ID {id}.");
+    }
+    public Reserva? ObtenerPorID(int id)
+    {
+        List<Reserva> reservas = Listar();
+        foreach (Reserva r in reservas)
+        {
+            if (r.Id == id)
+            {
+                return r;
+            }
+        }
+        return null;
+    }
+    public Reserva? ObtenerPorPersonaYEvento(int personaId, int eventoId)
+    {
+        List<Reserva> reservas = Listar();
+        foreach (Reserva r in reservas)
+        {
+            if (r.PersonaId == personaId && r.EventoDeportivoId == eventoId)
+            {
+                return r;
+            }
+        }
+        return null;
+    }
+    public List<Reserva> ObtenerPorEvento(int eventoId)
+    {
+        List<Reserva> reservas = Listar();
+        List<Reserva> reservasPorEvento = new List<Reserva>();
+        foreach (Reserva r in reservas)
+        {
+            if (r.EventoDeportivoId == eventoId)
+            {
+                reservasPorEvento.Add(r);
+            }
+        }
+        return reservasPorEvento;
+    }
+    public List<Reserva> ObtenerPorPersona(int personaId)
+    {
+        List<Reserva> reservas = Listar();
+        List<Reserva> reservasPorPersona = new List<Reserva>();
+        foreach (Reserva r in reservas)
+        {
+            if (r.PersonaId == personaId)
+            {
+                reservasPorPersona.Add(r);
+            }
+        }
+        return reservasPorPersona;
+    }
+}
