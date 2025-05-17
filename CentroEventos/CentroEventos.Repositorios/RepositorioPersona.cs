@@ -18,8 +18,7 @@ public class RepositorioPersona: IRepositorioPersona
         sw.WriteLine(persona.Apellido);
         sw.WriteLine(persona.Email);
         sw.WriteLine(persona.Telefono);
-        var permisosComoTexto = string.Join(",", persona.Permisos);
-        sw.WriteLine(permisosComoTexto);
+        Console.WriteLine("Se agrego a la persona correctamente");
     }
     private int ObtenerUltimoID()
     {
@@ -87,6 +86,7 @@ public class RepositorioPersona: IRepositorioPersona
             if (personas[i].Id == id)
             {
                 personas.RemoveAt(i);
+                Console.WriteLine("Persona Eliminada");
                 break;
             }
         }
@@ -102,7 +102,7 @@ public class RepositorioPersona: IRepositorioPersona
         }
     }
 
-    public Persona obtenerPorDNI(string dni)
+    public Persona? obtenerPorDNI(string dni)
     {
         List<Persona> personas = Listar();
         foreach (var p in personas)
@@ -115,7 +115,7 @@ public class RepositorioPersona: IRepositorioPersona
         return null;
     }
 
-    public Persona obtenerPorEmail(string email)
+    public Persona? obtenerPorEmail(string email)
     {
         List<Persona> personas = Listar();
         foreach (var p in personas)
@@ -128,7 +128,7 @@ public class RepositorioPersona: IRepositorioPersona
         return null;
     }
 
-    public Persona ObtenerPorID(int id)
+    public Persona? ObtenerPorID(int id)
     {
         List<Persona> personas = Listar();
         foreach (var p in personas)
@@ -140,6 +140,7 @@ public class RepositorioPersona: IRepositorioPersona
         }
         return null;
     }
+    
 
 
 }
