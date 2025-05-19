@@ -21,6 +21,6 @@ public class Persona
 
     public override string ToString()
     {
-        return $"[{Id}] {Nombre} {Apellido} - DNI: {DNI} - Email: {Email} - Tel: {Telefono} - Permisos: {Permisos}";
+        return $"[{Id}] {Nombre} {Apellido} - DNI: {DNI} - Email: {Email} - Tel: {Telefono}";
     }
 }

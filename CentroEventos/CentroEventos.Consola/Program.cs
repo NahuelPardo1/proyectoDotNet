@@ -33,7 +33,7 @@ Console.WriteLine();
 Console.WriteLine("Ingrese su DNI: ");
 
 string? dni = Console.ReadLine();
-if (dni != null) {
+if (!string.IsNullOrWhiteSpace(dni)) {
     usuario = repositorioPersona.obtenerPorDNI(dni);
     if (usuario == null)
     {
@@ -52,14 +52,15 @@ if (dni != null) {
         try {
             agregarPersona.Ejecutar(usuario, 1);
         }
+
         catch(Exception ex) {
             Console.WriteLine(ex);
         }
     }
     else {
         Console.WriteLine("Bienvenido " + usuario.Nombre + " " + usuario.Apellido);
-        id = usuario.Id;
     }
+    id= usuario.Id;
 }
 
 do
@@ -88,17 +89,15 @@ do
         {
             case 1:
                 {
-                    try
+                    List<Persona> personas = listarPersonas.Ejecutar();
+                    if (personas.Count == 0)
                     {
-                        List<Persona> personas = listarPersonas.Ejecutar();
-                        foreach (var persona in personas)
-                        {
-                            Console.WriteLine(persona.ToString());
-                        }
+                        Console.WriteLine("No hay personas registradas.");
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        Console.WriteLine(ex);
+                        Console.WriteLine("Personas registradas: ");
+                        personas.ForEach(p => Console.WriteLine(p.ToString()));
                     }
                     break;
                 }
@@ -143,6 +142,7 @@ do
                     {
                         Console.WriteLine("Ingrese el ID de la persona a eliminar: ");
                         int idEliminar = int.Parse(Console.ReadLine() ?? "0");
+                        eliminarPersona.Ejecutar(idEliminar, id);
                     }
                     catch (Exception ex)
                     {
@@ -152,13 +152,15 @@ do
                 }
             case 5:
                 {
-                    try
+                    List<EventoDeportivo> eventos = listarEventos.Ejecutar();
+                    if(eventos.Count == 0)
                     {
-
+                        Console.WriteLine("No hay eventos deportivos registrados.");
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        Console.WriteLine(ex);
+                        Console.WriteLine("Eventos deportivos: ");
+                        eventos.ForEach(e => Console.WriteLine(eventos.ToString()));
                     }
                     break;
                 }
@@ -166,7 +168,12 @@ do
                 {
                     try
                     {
-
+                        EventoDeportivo evento = new EventoDeportivo();
+                        Console.WriteLine("Ingrese el nombre del evento deportivo a añadir: ");
+                        evento.Nombre = Console.ReadLine();
+                        Console.WriteLine("Ingrese la descripcion del evento deportivo a añadir: ");
+                        evento.Descripcion = Console.ReadLine();
+                        Console.WriteLine("Ingrese la fecha y hora de inicio del evento deportivo a añadir (dd/MM/yyyy HH:mm): ");
                     }
                     catch (Exception ex)
                     {
@@ -285,32 +292,3 @@ do
     }
 }
 while (sigue);
-//Persona p1 = new Persona("Nahuel","Pardo","44216489","Nahuelpardo3@gmail.com","2224492875");
-//try
-//{
-//    personaAltaUseCase.Ejecutar(p1, 1);
-//}
-//catch (Exception ex)
-//{
-//    Console.Write(ex);
-//}
-
-
-//PersonaBajaUseCase personaBajaUseCase = new PersonaBajaUseCase(new RepositorioPersona(), new ServicioAutorizacionProvisiorio(), new RepositorioEventoDeportivo(), new RepositorioReserva());
-//try { 
-
-//    personaBajaUseCase.Ejecutar(1, 1);
-//}
-//catch (Exception ex)
-//{
-//    Console.Write(ex);
-//}
-
-//PersonaModificacionUseCase personaModificacionUseCase = new PersonaModificacionUseCase(new RepositorioPersona(), new ServicioAutorizacionProvisorio());
-//try {
-//    personaModificacionUseCase.Ejecutar(3, new Persona("Nahuel", "Benitez", "44216489", "Nahuelpardo3@gmail.com", "2224492875"),1);
-//}
-//catch(Exception ex)
-//{
-//    Console.Write(ex);
-//}
