@@ -1,7 +1,7 @@
 namespace CentroEventos.Aplicacion;
 public class ReservaListadoUseCase
 {
-    private readonly IRepositorioReserva _repositorioReserva
+    private readonly IRepositorioReserva _repositorioReserva;
     public ReservaListadoUseCase(IRepositorioReserva repositorioReserva)
     {
         _repositorioReserva = repositorioReserva;

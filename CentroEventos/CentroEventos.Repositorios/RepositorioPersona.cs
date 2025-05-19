@@ -4,8 +4,25 @@ using System.IO;
 
 public class RepositorioPersona: IRepositorioPersona 
 {
-    readonly string _nombreArchivo = "DataBase/Personas.txt";
-    readonly string _ultimoId = "DataBase/PersonasUltimoId.txt";
+    readonly string _nombreArchivo;
+    readonly string _ultimoId;
+
+    public RepositorioPersona() {
+        string dirProyecto = AppDomain.CurrentDomain.BaseDirectory;
+        string dirRepositorio = Path.Combine(dirProyecto, @"..\..\..\..\CentroEventos.Repositorios\DataBase");
+
+        if (!Directory.Exists(dirRepositorio))
+        {
+            Directory.CreateDirectory(dirRepositorio);
+        }
+        _nombreArchivo = Path.Combine(dirRepositorio,"Personas.txt");
+        _ultimoId = Path.Combine(dirRepositorio,"PersonaUltimoId.txt");
+        // Verificar si el archivo Personas.txt existe, si no, crearlo vacío
+        if (!File.Exists(_nombreArchivo))
+        {
+            File.Create(_nombreArchivo).Close();
+        }
+    }
     public void Agregar(Persona persona)
     {
         int lastId = ObtenerUltimoID();
@@ -30,7 +47,7 @@ public class RepositorioPersona: IRepositorioPersona
         string ultimoId = File.ReadAllText(_ultimoId);
         return int.Parse(ultimoId);
     }
-    private void GuardarUltimoID(int id)
+    private void GuardarUltimoID(int? id)
     {
         StreamWriter sw = new StreamWriter(_ultimoId,false);
         sw.WriteLine(id);
@@ -43,7 +60,9 @@ public class RepositorioPersona: IRepositorioPersona
         using var sr = new StreamReader(_nombreArchivo);
         while (!sr.EndOfStream)
         {
-            persona.Id = int.Parse(sr.ReadLine());
+            string? linea = sr.ReadLine();
+            if (linea == null) throw new Exception("Formato invalido de archivo: falta el id");
+            persona.Id = int.Parse(linea);
             persona.Nombre = sr.ReadLine();
             persona.DNI = sr.ReadLine();
             persona.Apellido = sr.ReadLine();

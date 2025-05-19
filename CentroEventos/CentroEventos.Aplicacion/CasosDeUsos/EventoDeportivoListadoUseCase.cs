@@ -4,12 +4,10 @@ namespace CentroEventos.Aplicacion;
 public class EventoDeportivoListadoUseCase
 {
     private readonly IRepositorioEventoDeportivo _repositorioEventoDeportivo;
-    private readonly IServicioAutorizacion _servicioAutorizacion;
 
-    public EventoDeportivoListadoUseCase(IRepositorioEventoDeportivo repositorioEventoDeportivo, IServicioAutorizacion servicioAutorizacion)
+    public EventoDeportivoListadoUseCase(IRepositorioEventoDeportivo repositorioEventoDeportivo)
     {
         _repositorioEventoDeportivo = repositorioEventoDeportivo;
-        _servicioAutorizacion = servicioAutorizacion;
     }
 
     public List<EventoDeportivo> Ejecutar()

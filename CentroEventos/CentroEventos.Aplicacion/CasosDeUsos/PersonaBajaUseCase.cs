@@ -16,7 +16,7 @@ public class PersonaBajaUseCase
     public void Ejecutar (int IDBaja, int IdUsuario)
     {
         // 1. Verificar permiso
-        if (_servicioAutorizacion.PoseeElPermiso(IdUsuario, Permiso.UsuarioBaja))
+        if (!_servicioAutorizacion.PoseeElPermiso(IdUsuario, Permiso.UsuarioBaja))
         {
             throw new FalloAutorizacionException("El usuario no posee el permiso para relizar esta acción");
         }
