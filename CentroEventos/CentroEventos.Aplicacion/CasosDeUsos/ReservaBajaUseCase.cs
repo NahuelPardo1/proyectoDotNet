@@ -1,6 +1,4 @@
-using CentroEventos.Aplicacion;
-
-namespace CentroEvento.Aplicacion;
+namespace CentroEventos.Aplicacion;
 public class ReservaBajaUseCase
 {
     private readonly IRepositorioReserva _repositorioReserva;

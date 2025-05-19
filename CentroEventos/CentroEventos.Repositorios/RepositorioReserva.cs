@@ -1,4 +1,4 @@
-namespace CentroEventos.Repositorio;
+namespace CentroEventos.Repositorios;
 
 using CentroEventos.Aplicacion;
 
@@ -8,13 +8,21 @@ public class RepositorioReserva : IRepositorioReserva
     private readonly string _rutaUltimoId;
     public RepositorioReserva()
     {
-        string dirCapeta = Path.Combine(Environment.CurrentDirectory, "DataBase");
-        if (!Directory.Exists(dirCapeta))
+        string dirProyecto = AppDomain.CurrentDomain.BaseDirectory;
+        string dirRepositorio = Path.Combine(dirProyecto, @"..\..\..\..\CentroEventos.Repositorios\DataBase");
+
+        if (!Directory.Exists(dirRepositorio))
         {
-            Directory.CreateDirectory(dirCapeta);
+            Directory.CreateDirectory(dirRepositorio);
         }
-        _ruta = Path.Combine(dirCapeta, "Reservas.txt");
-        _rutaUltimoId = Path.Combine(dirCapeta, "UltimoId.txt");
+        _ruta = Path.Combine(dirRepositorio, "Reservas.txt");
+        _rutaUltimoId = Path.Combine(dirRepositorio, "ReservaUltimoId.txt");
+
+        // Verificar si el archivo Reservas.txt existe, si no, crearlo vacío
+        if (!File.Exists(_ruta))
+        {
+            File.Create(_ruta).Close();
+        }
     }
     private int ObtenerUltimoID()
     {
@@ -37,7 +45,7 @@ public class RepositorioReserva : IRepositorioReserva
         int UtlimoId = ObtenerUltimoID() + 1;
         reserva.Id = UtlimoId;
         GuardarUltimoID(UtlimoId);
-        StreamWriter sw = new StreamWriter(_ruta, append: true);
+        StreamWriter sw = new StreamWriter(_ruta, true);
         sw.WriteLine(reserva.ToString());
         sw.Close();
         Console.WriteLine($"Reserva agregada con ID {reserva.Id}.");
