@@ -1,3 +1,5 @@
+using CentroEvento.Aplicacion;
+
 namespace CentroEventos.Aplicacion
 {
     public class ListarAsistenciaAEventoUseCase
@@ -12,10 +14,17 @@ namespace CentroEventos.Aplicacion
             _repositorioReserva = repositorioReserva;
         }
 
-        public List<Persona> Ejecutar(EventoDeportivo e)
+        public List<Persona> Ejecutar(int id)
         {
+            // 1. Verificar existencia del evento
+            
+            if(_repositorioEventoDeportivo.ObtenerPorID(id) == null)
+            {
+                throw new EntidadNotFoundException("El evento no existe");
+            }
+
             List<Persona> asistentes = new List<Persona>();
-            List<Reserva> reservas = _repositorioReserva.ObtenerPorEvento(e.Id);
+            List<Reserva> reservas = _repositorioReserva.ObtenerPorEvento(id);
             foreach (Reserva reserva in reservas)
             {
                 if (reserva.EstadoReserva == Estado.Presente)
