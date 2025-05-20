@@ -55,13 +55,13 @@ public class RepositorioPersona: IRepositorioPersona
     }
 
     public List<Persona> Listar() { 
-        Persona persona = new Persona();
         List<Persona> personas = new List<Persona>();
         using var sr = new StreamReader(_nombreArchivo);
         while (!sr.EndOfStream)
         {
             string? linea = sr.ReadLine();
             if (linea == null) throw new Exception("Formato invalido de archivo: falta el id");
+            Persona persona = new Persona();
             persona.Id = int.Parse(linea);
             persona.Nombre = sr.ReadLine();
             persona.DNI = sr.ReadLine();
@@ -88,7 +88,7 @@ public class RepositorioPersona: IRepositorioPersona
                 
             }
         }
-        using var sw = new StreamWriter(_nombreArchivo, false);
+        using var sw = new StreamWriter(_nombreArchivo);
         foreach (var p in personas)
         {
             sw.WriteLine(p.Id);
