@@ -65,6 +65,7 @@ if (!string.IsNullOrWhiteSpace(dni)) {
 
 do
 {
+    Console.WriteLine();
     Console.WriteLine("Seleccione una opción:");
     Console.WriteLine("1. Listar personas");
     Console.WriteLine("2. Agregar persona");
