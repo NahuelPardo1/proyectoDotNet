@@ -32,13 +32,13 @@ public class ValidadorPersona
             mensaje += "El email no puede estar vacio \n";
         }
 
-        if (_repositorio.obtenerPorDNI(persona.DNI) != null)
+        if (!string.IsNullOrWhiteSpace(persona.DNI) && _repositorio.obtenerPorDNI(persona.DNI) != null)
         {
             mensaje += "El DNI ya existe \n";
             throw new DuplicadoException("Ya existe una persona con ese DNI");
         }
 
-        if (_repositorio.obtenerPorEmail(persona.Email)!= null)
+        if (!string.IsNullOrWhiteSpace(persona.Email) && _repositorio.obtenerPorEmail(persona.Email) != null)
         {
             mensaje += "El email ya existe \n";
             throw new DuplicadoException("Ya existe una persona con ese email");
