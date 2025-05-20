@@ -105,18 +105,18 @@ do
                 {
                     try
                     {
-                        Persona persona = new Persona();
+                        Persona p = new Persona();
                         Console.WriteLine("Ingrese el nombre de la persona a añadir: ");
-                        persona.Nombre = Console.ReadLine();
+                        p.Nombre = Console.ReadLine();
                         Console.WriteLine("Ingrese el apellido de la persona a añadir: ");
-                        persona.Apellido = Console.ReadLine();
+                        p.Apellido = Console.ReadLine();
                         Console.WriteLine("Ingrese el DNI de la persona a añadir: ");
-                        persona.DNI = Console.ReadLine();
+                        p.DNI = Console.ReadLine();
                         Console.WriteLine("Ingrese el email de la persona a añadir: ");
-                        persona.Email = Console.ReadLine();
+                        p.Email = Console.ReadLine();
                         Console.WriteLine("Ingrese el telefono de la persona a añadir: ");
-                        persona.Telefono = Console.ReadLine();
-                        agregarPersona.Ejecutar(persona, id);
+                        p.Telefono = Console.ReadLine();
+                        agregarPersona.Ejecutar(p, id);
                     }
                     catch (Exception ex)
                     {
@@ -128,7 +128,18 @@ do
                 {
                     try
                     {
-                        //Pensar despues
+                        Console.WriteLine("Ingrese el ID de la persona a modificar: ");
+                        int idModificar = int.Parse(Console.ReadLine() ?? "0");
+                        Console.WriteLine("Ingrese el nuevo nombre de la persona: ");
+                        string? Nombre = Console.ReadLine();
+                        Console.WriteLine("Ingrese el nuevo apellido de la persona: ");
+                        string? Apellido = Console.ReadLine();
+                        Console.WriteLine("Ingrese el nuevo DNI de la persona: ");
+                        string? DNI = Console.ReadLine();
+                        Console.WriteLine("Ingrese el nuevo email de la persona: ");
+                        string? Email = Console.ReadLine();
+                        Console.WriteLine("Ingrese el nuevo telefono de la persona: ");
+                        string? Telefono = Console.ReadLine();
                     }
                     catch (Exception ex)
                     {
@@ -207,13 +218,15 @@ do
                 }
             case 9:
                 {
-                    try
+                    List<Reserva> reservas = listarReservas.Ejecutar();
+                    if(reservas.Count == 0)
                     {
-
+                        Console.WriteLine("No hay reservas registradas.");
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        Console.WriteLine(ex);
+                        Console.WriteLine("Reservas: ");
+                        reservas.ForEach(r => Console.WriteLine(reservas.ToString()));
                     }
                     break;
                 }
@@ -257,6 +270,18 @@ do
                 {
                     try
                     {
+                        Console.WriteLine("Ingrese el ID del evento deportivo: ");
+                        int idEvento = int.Parse(Console.ReadLine() ?? "0");
+                        List<Persona> asistencia = listarAsistenciaAEvento.Ejecutar(idEvento);
+                        if(asistencia.Count == 0)
+                        {
+                            Console.WriteLine("Nadie asistió a este evento");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Personas que asistieron al evento ingresado: ");
+                            asistencia.ForEach(a => Console.WriteLine(a.ToString()));
+                        }
 
                     }
                     catch (Exception ex)
@@ -267,15 +292,16 @@ do
                 }
             case 14:
                 {
-                    try
+                    List<EventoDeportivo> eventosConCupo = listarEventosConCupoDisponible.Ejecutar();
+                    if (eventosConCupo.Count == 0)
                     {
-
+                        Console.WriteLine("No hay eventos con cupo disponible");
                     }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex);
+                    else
+                    { 
+                        eventosConCupo.ForEach(e => Console.WriteLine(e.ToString()));
                     }
-                    break;
+                        break;
                 }
             case 15:
                 {

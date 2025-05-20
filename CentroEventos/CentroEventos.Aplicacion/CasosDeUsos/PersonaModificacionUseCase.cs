@@ -23,17 +23,7 @@ public class PersonaModificacionUseCase
             throw new EntidadNotFoundException("La persona a modificar no existe");
         }
 
-        // 3. Validad datos
-        ValidadorPersona validador = new ValidadorPersona(_repositorioPersona);
-        if (!validador.Validador(personaModificada, out string msj))
-        {
-            throw new ValidacionException(msj);
-        }
-
-        // 4. Actualizar ID para asegurar que se mantenga el orden
-        personaModificada.Id = IdPersonaAModificar;
-
-        // 5. Modificar 
+        // 3. Modificar 
         _repositorioPersona.Modificar(personaModificada,IdPersonaAModificar);
     }
 }

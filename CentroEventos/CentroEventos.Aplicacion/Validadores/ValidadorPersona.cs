@@ -35,11 +35,13 @@ public class ValidadorPersona
         if (_repositorio.obtenerPorDNI(persona.DNI) != null)
         {
             mensaje += "El DNI ya existe \n";
+            throw new DuplicadoException("Ya existe una persona con ese DNI");
         }
 
         if (_repositorio.obtenerPorEmail(persona.Email)!= null)
         {
             mensaje += "El email ya existe \n";
+            throw new DuplicadoException("Ya existe una persona con ese email");
         }
 
         return mensaje == "";

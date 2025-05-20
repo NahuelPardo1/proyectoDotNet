@@ -84,6 +84,9 @@ public class RepositorioPersona: IRepositorioPersona
                 personas[i] = persona;
                 break;
             }
+            else { 
+                
+            }
         }
         using var sw = new StreamWriter(_nombreArchivo, false);
         foreach (var p in personas)
