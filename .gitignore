@@ -12,3 +12,4 @@ obj/
 *.suo
 *.userosscache
 *.sln.docstates
+CentroEvento.Repositorios/DataBase
