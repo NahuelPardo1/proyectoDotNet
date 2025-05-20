@@ -47,7 +47,13 @@ public class RepositorioEventoDeportivo: IRepositorioEventoDeportivo
         evento.Id = UtlimoId;
         GuardarUltimoID(UtlimoId);
         StreamWriter sw = new StreamWriter(_ruta, append: true);
-        sw.WriteLine(evento.ToString());
+        sw.WriteLine(evento.Id);
+        sw.WriteLine(evento.Nombre); 
+        sw.WriteLine(evento.Descripcion);
+        sw.WriteLine(evento.FechaHoraInicio.ToString("yyyy-MM-dd HH:mm:ss"));
+        sw.WriteLine(evento.DuracionHoras);
+        sw.WriteLine(evento.CupoMaximo);
+        sw.WriteLine(evento.ResponsbleID);
         sw.Close();
         Console.WriteLine($"Evento Deportivo {evento.Nombre} agregado con ID {evento.Id}.");
     }
@@ -60,8 +66,8 @@ public class RepositorioEventoDeportivo: IRepositorioEventoDeportivo
         {
             evento.Id = int.Parse(sr.ReadLine());
             evento.Nombre = sr.ReadLine();
-            evento.Descripcion = sr.ReadLine();
-            evento.FechaHoraInicio = DateTime.Parse(sr.ReadLine());
+            evento.Descripcion = sr.ReadLine();                                               // para mantener el formato fijo y no depender de la hora del pais
+            evento.FechaHoraInicio = DateTime.ParseExact(sr.ReadLine(), "yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
             evento.DuracionHoras = double.Parse(sr.ReadLine());
             evento.CupoMaximo = int.Parse(sr.ReadLine());
             evento.ResponsbleID = int.Parse(sr.ReadLine());

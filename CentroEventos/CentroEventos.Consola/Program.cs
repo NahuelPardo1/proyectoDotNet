@@ -38,7 +38,7 @@ if (!string.IsNullOrWhiteSpace(dni)) {
     if (usuario == null)
     {
         usuario = new Persona();
-        Console.WriteLine("El DNI ingresado no existe en el sistema, por favor registrese primero.");
+        Console.WriteLine("El DNI ingresado no existe en el sistema, por favor registrese primero.\n");
         Console.WriteLine("Ingrese su nombre: ");
         usuario.Nombre = Console.ReadLine();
         Console.WriteLine("Ingrese su apellido: ");
@@ -170,14 +170,14 @@ do
             case 5:
                 {
                     List<EventoDeportivo> eventos = listarEventos.Ejecutar();
-                    if(eventos.Count == 0)
+                    if (eventos.Count == 0)
                     {
                         Console.WriteLine("No hay eventos deportivos registrados.");
                     }
                     else
                     {
-                        Console.WriteLine("Eventos deportivos: ");
-                        eventos.ForEach(e => Console.WriteLine(eventos.ToString()));
+                        Console.WriteLine("Eventos deportivos:\n");
+                        eventos.ForEach(e => Console.WriteLine(e.ToString()+"\n"));
                     }
                     break;
                 }
@@ -185,12 +185,27 @@ do
                 {
                     try
                     {
+                        
                         EventoDeportivo evento = new EventoDeportivo();
                         Console.WriteLine("Ingrese el nombre del evento deportivo a añadir: ");
                         evento.Nombre = Console.ReadLine();
+                        
                         Console.WriteLine("Ingrese la descripcion del evento deportivo a añadir: ");
                         evento.Descripcion = Console.ReadLine();
+                        
                         Console.WriteLine("Ingrese la fecha y hora de inicio del evento deportivo a añadir (dd/MM/yyyy HH:mm): ");
+                        evento.FechaHoraInicio = DateTime.ParseExact(Console.ReadLine() ?? "0", "dd/MM/yyyy HH:mm", System.Globalization.CultureInfo.InvariantCulture);
+
+                        Console.WriteLine("Ingrese la duracion del evento deportivo");
+                        evento.DuracionHoras = double.Parse(Console.ReadLine() ?? "0");
+
+                        Console.WriteLine("Ingrese la cantidad de personas que pueden asistir al evento deportivo a añadir: ");
+                        evento.CupoMaximo = int.Parse(Console.ReadLine() ?? "0");
+                        
+                        Console.WriteLine("Ingrese el ID de la persona que organiza el evento deportivo a añadir: ");
+                        evento.ResponsbleID = int.Parse(Console.ReadLine() ?? "0");
+                        
+                        agregarEvento.Ejecutar(evento, id);
                     }
                     catch (Exception ex)
                     {
