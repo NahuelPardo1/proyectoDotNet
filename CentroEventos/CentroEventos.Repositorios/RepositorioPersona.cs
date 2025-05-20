@@ -76,16 +76,13 @@ public class RepositorioPersona: IRepositorioPersona
 
     public void Modificar(Persona persona,int id) {
         List<Persona> personas = Listar();
+
         for (int i = 0; i < personas.Count; i++)
         {
             if (personas[i].Id == id)
             {
-                personas[i].Id = persona.Id;
+                persona.Id = personas[i].Id;
                 personas[i] = persona;
-                break;
-            }
-            else { 
-                
             }
         }
         using var sw = new StreamWriter(_nombreArchivo);
@@ -117,8 +114,8 @@ public class RepositorioPersona: IRepositorioPersona
         {
             sw.WriteLine(p.Id);
             sw.WriteLine(p.Nombre);
-            sw.WriteLine(p.Apellido);
             sw.WriteLine(p.DNI);
+            sw.WriteLine(p.Apellido);
             sw.WriteLine(p.Email);
             sw.WriteLine(p.Telefono);
         }

@@ -22,8 +22,6 @@ public class PersonaModificacionUseCase
         {
             throw new EntidadNotFoundException("La persona a modificar no existe");
         }
-
-        // 3. Modificar 
         _repositorioPersona.Modificar(personaModificada,IdPersonaAModificar);
     }
 }
