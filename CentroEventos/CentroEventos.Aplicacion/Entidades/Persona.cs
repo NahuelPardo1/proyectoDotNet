@@ -14,6 +14,7 @@ public class Persona
         if(string.IsNullOrWhiteSpace(DNI)) throw new ValidacionException("El DNI no puede ser nulo estar vacio");
         if(string.IsNullOrWhiteSpace(Email)) throw new ValidacionException("El mail no puede ser nulo ni estar vacio");
         if (Email != null && !EmailValido(Email)) throw new ValidacionException("El formato del mail no es válido.");
+        if(DNIValido(DNI) == false) throw new ValidacionException("El formato del DNI no es válido.");
         this.Nombre = Nombre;
         this.Apellido = Apellido;
         this.DNI = DNI;
