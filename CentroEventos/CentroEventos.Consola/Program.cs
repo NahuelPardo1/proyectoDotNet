@@ -87,6 +87,11 @@ do
         int num = int.Parse(opcion);
         switch (num)
         {
+            case 0:
+                {
+                    Console.WriteLine("Opción no válida. Intente nuevamente.");
+                    break;
+                }
             case 1:
                 {
                     List<Persona> personas = listarPersonas.Ejecutar();
