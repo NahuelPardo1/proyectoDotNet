@@ -8,7 +8,7 @@ public class EventoDeportivo
     public double DuracionHoras{get;set;} = 0;
     public int CupoMaximo {get;set;} = 0;
     public int ResponsbleID {get;set;} = 0;
-    public EventoDeportivo(string nombre,string descripcion, DateTime fechaInicio,double duracion, int cupo,int responsable)
+    public EventoDeportivo(string? nombre,string? descripcion, DateTime fechaInicio,double duracion, int cupo,int responsable)
     {
         if(string.IsNullOrWhiteSpace(nombre)) throw new ValidacionException("El nombre no puede ser nulo ni estar vacio");
         if(string.IsNullOrWhiteSpace(descripcion)) throw new ValidacionException("La descripcion no puede ser nula ni estar vacia");
@@ -30,7 +30,7 @@ public class EventoDeportivo
                $"Numero de Evento: {Id}\n" +
                $"Descripcion: {Descripcion}\n" +
                $"Comienza: {FechaHoraInicio}\n" +
-               $"Duracion: {DuracionHoras}\n" +
+               $"Duracion: {DuracionHoras} hs\n" +
                $"Cupos: {CupoMaximo}\n" +
                $"Responsable: {ResponsbleID}";
     }

@@ -60,10 +60,11 @@ public class RepositorioEventoDeportivo: IRepositorioEventoDeportivo
     public List<EventoDeportivo> Listar()
     {
         List<EventoDeportivo> eventos = new List<EventoDeportivo>();
-        EventoDeportivo evento = new EventoDeportivo();
+        
         using StreamReader sr = new StreamReader(_ruta);
         while (!sr.EndOfStream)
         {
+            EventoDeportivo evento = new EventoDeportivo();
             evento.Id = int.Parse(sr.ReadLine());
             evento.Nombre = sr.ReadLine();
             evento.Descripcion = sr.ReadLine();                                               // para mantener el formato fijo y no depender de la hora del pais
@@ -91,7 +92,13 @@ public class RepositorioEventoDeportivo: IRepositorioEventoDeportivo
         using StreamWriter sw = new StreamWriter(_ruta);
         foreach(EventoDeportivo e in eventos)
         {
-            sw.WriteLine(e.ToString());
+            sw.WriteLine(e.Id);
+            sw.WriteLine(e.Nombre);
+            sw.WriteLine(e.Descripcion);
+            sw.WriteLine(e.FechaHoraInicio.ToString("yyyy-MM-dd HH:mm:ss"));
+            sw.WriteLine(e.DuracionHoras);
+            sw.WriteLine(e.CupoMaximo);
+            sw.WriteLine(e.ResponsbleID);
         }
         sw.Close();
         Console.WriteLine($"Evento Deportivo {evento.Nombre} modificado con ID {evento.Id}.");

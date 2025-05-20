@@ -209,19 +209,41 @@ do
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine(ex);
+                        Console.WriteLine(ex.Message);
                     }
                     break;
                 }
             case 7:
                 {
                     try
-                    {
+                    { 
+                        Console.WriteLine("Ingrese el ID del evento deportivo a modificar: ");
+                        int idModificar = int.Parse(Console.ReadLine() ?? "0");
 
+                        Console.WriteLine("Ingrese el nuevo nombre del evento deportivo: ");
+                        string? Nombre = Console.ReadLine();
+                        
+                        Console.WriteLine("Ingrese la nueva descripcion del evento deportivo: ");
+                        string? Descripcion = Console.ReadLine();
+                        
+                        Console.WriteLine("Ingrese la nueva fecha y hora de inicio del evento deportivo (dd/MM/yyyy HH:mm): ");
+                        DateTime FechaHoraInicio = DateTime.ParseExact(Console.ReadLine() ?? "0", "dd/MM/yyyy HH:mm", System.Globalization.CultureInfo.InvariantCulture);
+                        
+                        Console.WriteLine("Ingrese la nueva duracion del evento deportivo: ");
+                        double DuracionHoras = double.Parse(Console.ReadLine() ?? "0");
+                        
+                        Console.WriteLine("Ingrese la nueva cantidad de personas que pueden asistir al evento deportivo: ");
+                        int CupoMaximo = int.Parse(Console.ReadLine() ?? "0");
+                        
+                        Console.WriteLine("Ingrese el nuevo ID de la persona que organiza el evento deportivo: ");
+                        int ResponsbleID = int.Parse(Console.ReadLine() ?? "0");
+                        EventoDeportivo eventoModificado = new EventoDeportivo(Nombre, Descripcion, FechaHoraInicio, DuracionHoras, CupoMaximo, ResponsbleID);
+
+                        editarEvento.Ejecutar(idModificar,eventoModificado,id);
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine(ex);
+                        Console.WriteLine(ex.Message);
                     }
                     break;
                 }
