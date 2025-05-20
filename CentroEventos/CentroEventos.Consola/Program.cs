@@ -134,18 +134,25 @@ do
                 {
                     try
                     {
+                        Persona p = new Persona();
                         Console.WriteLine("Ingrese el ID de la persona a modificar: ");
                         int idModificar = int.Parse(Console.ReadLine() ?? "0");
                         Console.WriteLine("Ingrese el nuevo nombre de la persona: ");
-                        string? Nombre = Console.ReadLine();
+                        p.Nombre = Console.ReadLine();
                         Console.WriteLine("Ingrese el nuevo apellido de la persona: ");
-                        string? Apellido = Console.ReadLine();
+                        p.Apellido = Console.ReadLine();
                         Console.WriteLine("Ingrese el nuevo DNI de la persona: ");
-                        string? DNI = Console.ReadLine();
+                        p.DNI = Console.ReadLine();
                         Console.WriteLine("Ingrese el nuevo email de la persona: ");
-                        string? Email = Console.ReadLine();
+                        p.Email = Console.ReadLine();
                         Console.WriteLine("Ingrese el nuevo telefono de la persona: ");
-                        string? Telefono = Console.ReadLine();
+                        p.Telefono = Console.ReadLine();
+                        if(string.IsNullOrWhiteSpace(p.Nombre) || string.IsNullOrWhiteSpace(p.Apellido) || string.IsNullOrWhiteSpace(p.Email) || string.IsNullOrWhiteSpace(p.Telefono))
+                        {
+                            throw new ValidacionException("Los campos no pueden estar vacios");
+                        }
+                        editarPersona.Ejecutar(idModificar,p, id);
+
                     }
                     catch (Exception ex)
                     {
