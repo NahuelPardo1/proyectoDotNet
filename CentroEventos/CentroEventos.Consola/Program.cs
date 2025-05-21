@@ -308,7 +308,7 @@ do
                         Console.WriteLine("Ingrese el ID de la reserva a modificar: ");
                         int idModificar = int.Parse(Console.ReadLine() ?? "0");
                         
-                        Console.WriteLine("Ingrese el nuevo estado de la reserva (0.Pendiente, 1.Confirmada, 2.Cancelada): ");
+                        Console.WriteLine("Ingrese el nuevo estado de la reserva (0.Pendiente, 1.Presente, 2.Ausente): ");
                         string? estado = Console.ReadLine();
                         Estado estadoReserva = Enum.Parse<Estado>(estado);
                         
@@ -363,7 +363,7 @@ do
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine(ex);
+                        Console.WriteLine(ex.Message);
                     }
                     break;
                 }
