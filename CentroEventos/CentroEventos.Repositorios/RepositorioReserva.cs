@@ -46,19 +46,23 @@ public class RepositorioReserva : IRepositorioReserva
         reserva.Id = UtlimoId;
         GuardarUltimoID(UtlimoId);
         StreamWriter sw = new StreamWriter(_ruta, true);
-        sw.WriteLine(reserva.ToString());
+        sw.WriteLine(reserva.Id);
+        sw.WriteLine(reserva.EstadoReserva);
+        sw.WriteLine(reserva.PersonaId);
+        sw.WriteLine(reserva.EventoDeportivoId);
+        sw.WriteLine(reserva.FechaAltaReserva);
         sw.Close();
         Console.WriteLine($"Reserva agregada con ID {reserva.Id}.");
     }
     public List<Reserva> Listar()
     {
         List<Reserva> reservas = new List<Reserva>();
-        Reserva reserva = new Reserva();
         using StreamReader sr = new StreamReader(_ruta);
         while (!sr.EndOfStream)
         {
+            Reserva reserva = new Reserva();
             reserva.Id = int.Parse(sr.ReadLine());
-            reserva.EstadoReserva = (Estado)int.Parse(sr.ReadLine());
+            reserva.EstadoReserva = Enum.Parse<Estado>(sr.ReadLine());
             reserva.PersonaId = int.Parse(sr.ReadLine());
             reserva.EventoDeportivoId = int.Parse(sr.ReadLine());
             reserva.FechaAltaReserva = DateTime.Parse(sr.ReadLine());
@@ -81,7 +85,11 @@ public class RepositorioReserva : IRepositorioReserva
         StreamWriter sw = new StreamWriter(_ruta);
         foreach(Reserva r in reservas)
         {
-            sw.WriteLine(r.ToString());
+            sw.WriteLine(r.Id);
+            sw.WriteLine(r.EstadoReserva);
+            sw.WriteLine(r.PersonaId);
+            sw.WriteLine(r.EventoDeportivoId);
+            sw.WriteLine(r.FechaAltaReserva);
         }
         sw.Close();
         Console.WriteLine($"Reserva modificada con ID {reserva.Id}.");
@@ -100,7 +108,11 @@ public class RepositorioReserva : IRepositorioReserva
         StreamWriter sw = new StreamWriter(_ruta);
         foreach (Reserva r in reservas)
         {
-            sw.WriteLine(r.ToString());
+            sw.WriteLine(r.Id);
+            sw.WriteLine(r.EstadoReserva);
+            sw.WriteLine(r.PersonaId);
+            sw.WriteLine(r.EventoDeportivoId);
+            sw.WriteLine(r.FechaAltaReserva);
         }
         sw.Close();
         Console.WriteLine($"Reserva eliminada con ID {id}.");
