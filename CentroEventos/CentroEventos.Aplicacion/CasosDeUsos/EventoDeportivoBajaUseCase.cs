@@ -16,7 +16,7 @@ public class EventoDeportivoBajaUseCase
 
     public void Ejecutar(int idEvento, int idUsuario)
     {
-        if (!_servicioAutorizacion.PoseeElPermiso(idUsuario, Permiso.EventoBaja) == false)
+        if (!_servicioAutorizacion.PoseeElPermiso(idUsuario, Permiso.EventoBaja))
         {
             throw new FalloAutorizacionException("El responsable no posee el permiso para realizar esta accion");
         }

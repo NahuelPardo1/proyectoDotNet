@@ -118,7 +118,13 @@ public class RepositorioEventoDeportivo: IRepositorioEventoDeportivo
         using StreamWriter sw = new StreamWriter(_ruta);
         foreach(EventoDeportivo e in eventos)
         {
-            sw.WriteLine(e.ToString());
+            sw.WriteLine(e.Id);
+            sw.WriteLine(e.Nombre);
+            sw.WriteLine(e.Descripcion);
+            sw.WriteLine(e.FechaHoraInicio.ToString("yyyy-MM-dd HH:mm:ss"));
+            sw.WriteLine(e.DuracionHoras);
+            sw.WriteLine(e.CupoMaximo);
+            sw.WriteLine(e.ResponsbleID);
         }
         Console.WriteLine($"Evento Deportivo con ID {id} eliminado.");
     }

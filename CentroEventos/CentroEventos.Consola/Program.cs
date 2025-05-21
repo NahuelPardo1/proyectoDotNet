@@ -65,23 +65,17 @@ if (!string.IsNullOrWhiteSpace(dni)) {
 
 do
 {
-    Console.WriteLine();
-    Console.WriteLine("Seleccione una opción:");
-    Console.WriteLine("1. Listar personas");
-    Console.WriteLine("2. Agregar persona");
-    Console.WriteLine("3. Modificar persona");
-    Console.WriteLine("4. Eliminar persona");
-    Console.WriteLine("5. Listar eventos deportivos");
-    Console.WriteLine("6. Agregar evento deportivo");
-    Console.WriteLine("7. Modificar evento deportivo");
-    Console.WriteLine("8. Eliminar evento deportivo");
-    Console.WriteLine("9. Listar reservas");
-    Console.WriteLine("10. Agregar reserva");
-    Console.WriteLine("11. Modificar reserva");
-    Console.WriteLine("12. Eliminar reserva");
-    Console.WriteLine("13. Listar asistencia a evento deportivo");
-    Console.WriteLine("14. Listar eventos deportivos con cupo disponible");
-    Console.WriteLine("15. Salir");
+    Console.WriteLine("--------------------------------------------------------------------------------------------------");
+    Console.WriteLine("Seleccione una opción                                                                            |");
+    Console.WriteLine("1. Listar personas                       | 2. Agregar persona                                    |");
+    Console.WriteLine("3. Modificar persona                     | 4. Eliminar persona                                   |");
+    Console.WriteLine("5. Listar eventos deportivos             | 6. Agregar evento deportivo                           |");
+    Console.WriteLine("7. Modificar evento deportivo            | 8. Eliminar evento deportivo                          |");
+    Console.WriteLine("9. Listar reservas                       | 10. Agregar reserva                                   |");
+    Console.WriteLine("11. Modificar reserva                    | 12. Eliminar reserva                                  |");
+    Console.WriteLine("13. Listar asistencia a evento deportivo | 14. Listar eventos deportivos con cupo disponible     |");
+    Console.WriteLine("15. Salir                                |                                                       |");
+    Console.WriteLine("--------------------------------------------------------------------------------------------------");
     string? opcion = Console.ReadLine();
     if (!string.IsNullOrWhiteSpace(opcion))
     {
@@ -126,7 +120,7 @@ do
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine(ex);
+                        Console.WriteLine(ex.Message);
                     }
                     break;
                 }
@@ -152,11 +146,12 @@ do
                             throw new ValidacionException("Los campos no pueden estar vacios");
                         }
                         editarPersona.Ejecutar(idModificar,p, id);
+                        Console.WriteLine("Persona modificada con exito.");
 
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine(ex);
+                        Console.WriteLine(ex.Message);
                     }
                     break;
                 }
@@ -167,10 +162,11 @@ do
                         Console.WriteLine("Ingrese el ID de la persona a eliminar: ");
                         int idEliminar = int.Parse(Console.ReadLine() ?? "0");
                         eliminarPersona.Ejecutar(idEliminar, id);
+                        Console.WriteLine("Persona eliminada con exito.");
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine(ex);
+                        Console.WriteLine(ex.Message);
                     }
                     break;
                 }
@@ -213,6 +209,7 @@ do
                         evento.ResponsbleID = int.Parse(Console.ReadLine() ?? "0");
                         
                         agregarEvento.Ejecutar(evento, id);
+                        Console.WriteLine("Evento deportivo agregado con exito.");
                     }
                     catch (Exception ex)
                     {
@@ -247,6 +244,7 @@ do
                         EventoDeportivo eventoModificado = new EventoDeportivo(Nombre, Descripcion, FechaHoraInicio, DuracionHoras, CupoMaximo, ResponsbleID);
 
                         editarEvento.Ejecutar(idModificar,eventoModificado,id);
+                        Console.WriteLine("Evento deportivo modificado con exito.");
                     }
                     catch (Exception ex)
                     {
@@ -258,11 +256,14 @@ do
                 {
                     try
                     {
-
+                        Console.WriteLine("Ingrese el ID del evento deportivo a eliminar: ");
+                        int idEliminar = int.Parse(Console.ReadLine() ?? "0");
+                        eliminarEvento.Ejecutar(idEliminar, id);
+                        Console.WriteLine("Evento eliminado con exito.");
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine(ex);
+                        Console.WriteLine(ex.Message);
                     }
                     break;
                 }
@@ -276,7 +277,7 @@ do
                     else
                     {
                         Console.WriteLine("Reservas: ");
-                        reservas.ForEach(r => Console.WriteLine(reservas.ToString()));
+                        reservas.ForEach(r => Console.WriteLine(r.ToString()+"\n"));
                     }
                     break;
                 }
@@ -284,11 +285,19 @@ do
                 {
                     try
                     {
+                        Console.WriteLine("Ingrese el ID del evento deportivo para reservar: ");
+                        int idEvento = int.Parse(Console.ReadLine() ?? "0");
+                        
+                        Console.WriteLine("Ingrese el ID de la persona que reserva: ");
+                        int idPersona = int.Parse(Console.ReadLine() ?? "0");
 
+                        Reserva reserva = new Reserva(idPersona, idEvento);
+                        agregarReserva.Ejecutar(reserva, id);
+                        Console.WriteLine("Reserva realizada con exito.");
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine(ex);
+                        Console.WriteLine(ex.Message);
                     }
                     break;
                 }
@@ -296,11 +305,26 @@ do
                 {
                     try
                     {
-
+                        Console.WriteLine("Ingrese el ID de la reserva a modificar: ");
+                        int idModificar = int.Parse(Console.ReadLine() ?? "0");
+                        
+                        Console.WriteLine("Ingrese el nuevo estado de la reserva (0.Pendiente, 1.Confirmada, 2.Cancelada): ");
+                        string? estado = Console.ReadLine();
+                        Estado estadoReserva = Enum.Parse<Estado>(estado);
+                        
+                        Console.WriteLine("Ingrese el nuevo ID de la persona que reserva: ");
+                        int idPersona = int.Parse(Console.ReadLine() ?? "0");
+                        
+                        Console.WriteLine("Ingrese el nuevo ID del evento deportivo para reservar: ");
+                        int idEvento = int.Parse(Console.ReadLine() ?? "0");
+                        
+                        Reserva reserva = new Reserva(idPersona, idEvento, estadoReserva);
+                        editarReserva.Ejecutar(idModificar, reserva, id);
+                        Console.WriteLine("Reserva modificada con exito.");
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine(ex);
+                        Console.WriteLine(ex.Message);
                     }
                     break;
                 }
@@ -308,11 +332,14 @@ do
                 {
                     try
                     {
-
+                        Console.WriteLine("Ingrese el ID de la reserva a eliminar: ");
+                        int idEliminar = int.Parse(Console.ReadLine() ?? "0");
+                        eliminarReserva.Ejecutar(idEliminar, id);
+                        Console.WriteLine("Reserva eliminada con exito.");
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine(ex);
+                        Console.WriteLine(ex.Message);
                     }
                     break;
                 }
@@ -349,7 +376,7 @@ do
                     }
                     else
                     { 
-                        eventosConCupo.ForEach(e => Console.WriteLine(e.ToString()));
+                        eventosConCupo.ForEach(e => Console.WriteLine(e.ToString()+"\n"));
                     }
                         break;
                 }

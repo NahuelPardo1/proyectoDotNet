@@ -15,10 +15,12 @@ public class ValidadorReserva
         mensaje = "";
         if (_repositorioP.ObtenerPorID(reserva.PersonaId)==null) { 
             mensaje += "El ID de la persona no existe \n";
+            throw new EntidadNotFoundException("El ID de la persona no existe");
         }
         if(_repositorioED.ObtenerPorID(reserva.EventoDeportivoId) == null)
         {
             mensaje += "El ID del evento deportivo no existe \n";
+            throw new EntidadNotFoundException("El ID del evento deportivo no existe");
         }
         if(_repositorioR.ObtenerPorPersonaYEvento(reserva.PersonaId, reserva.EventoDeportivoId) != null)
         {
