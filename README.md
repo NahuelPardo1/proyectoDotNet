@@ -34,52 +34,82 @@ Para ejecutar el proyecto, asegúrate de tener instalado .NET 8 y sigue estos pa
 
 ### Descripción  
 Se simula el ingreso de un usuario nuevo, que no está registrado en el sistema. El sistema solicita los datos necesarios y lo registra. Luego, se lista a todas las personas registradas.
+ 
+### 🔧 Paso 1: Iniciar ejecución del sistema
 
----
-
-### Código Ejecutado
+Al iniciar el programa, se solicita al usuario que ingrese su DNI para verificar si ya está registrado en el sistema.
 
 ```csharp
-// Simulación de ingreso de un nuevo usuario
-Console.WriteLine("Ingrese su DNI:");
-string? dni = "12345678";
-usuario = repositorioPersona.obtenerPorDNI(dni);
-if (usuario == null)
-{
-    usuario = new Persona();
-    usuario.Nombre = "Nahuel";
-    usuario.Apellido = "Pardo";
-    usuario.DNI = dni;
-    usuario.Email = "nahuelpardo@example.com";
-    usuario.Telefono = "2211234567";
-    agregarPersona.Ejecutar(usuario, 1);
-}
+BIENVENIDO AL SISTEMA DE GESTIÓN DEL CENTRO DEPORTIVO UNIVERSITARIO
 
-// Listado de personas
-List<Persona> personas = listarPersonas.Ejecutar();
-if (personas.Count == 0)
-{
-    Console.WriteLine("No hay personas registradas.");
-}
-else
-{
-    Console.WriteLine("Personas registradas: ");
-    personas.ForEach(p => Console.WriteLine(p.ToString()));
-}
-
-## Salida esperada por consola
-```csharp
 Ingrese su DNI:
+```
+### 👤 Paso 2: Ingreso de un nuevo DNI (no registrado)
+
+El usuario ingresa el DNI `12345678`. Como este no se encuentra registrado, el sistema solicita los datos para registrarlo.
+```python
 El DNI ingresado no existe en el sistema, por favor registrese primero.
+
 Ingrese su nombre:
+
+John
+
 Ingrese su apellido:
+
+Doe
+
 Ingrese su DNI:
+
+12345678
+
 Ingrese su email:
+
+jhondoe@gmail.com
+
 Ingrese su telefono:
 
-Personas registradas:
-[1] Nahuel Pardo - DNI: 12345678 - Email: nahuelpardo@example.com - Teléfono: 2211234567
+2216549873
+```
+(Internamente se ejecuta `agregarPersona.Ejecutar()` con los datos ingresados)
+### 🖥️ Paso 3: Menú de opciones
 
+Luego del registro exitoso, se muestra el menú principal:
+```text
+Seleccione una opción: 
+
+1. Listar personas                       | 2. Agregar persona 
+
+3. Modificar persona                     | 4. Eliminar persona 
+
+4. Listar eventos deportivos             | 6. Agregar evento deportivo 
+
+7. Modificar evento deportivo            | 8. Eliminar evento deportivo 
+
+9. Listar reservas                       | 10. Agregar reserva 
+
+11. Modificar reserva                    | 12. Eliminar reserva 
+
+13. Listar asistencia a evento deportivo | 14. Listar eventos deportivos con cupo disponible 
+
+15. Salir 
+
+```
+### 📋 Paso 4: Listar personas
+
+El usuario selecciona la opción **1** para listar todas las personas registradas.
+```text
+Personas registradas:
+ID: 1 - John Doe - DNI: 12345678 - Email: johndoe@gmail.com - Teléfono: 2216549873
+```
+## ✅ Resultado
+
+El sistema permitió:
+- Registrar una nueva persona.
+- Validar su existencia al inicio.
+- Mostrar el menú principal.
+- Listar correctamente las personas registradas.
+
+---
 
 ## 📄 Licencia	
 Este proyecto es de uso académico exclusivamente.
