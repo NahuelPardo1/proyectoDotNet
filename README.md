@@ -39,7 +39,7 @@ Se simula el ingreso de un usuario nuevo, que no está registrado en el sistema.
 
 Al iniciar el programa, se solicita al usuario que ingrese su DNI para verificar si ya está registrado en el sistema.
 
-```csharp
+```text
 BIENVENIDO AL SISTEMA DE GESTIÓN DEL CENTRO DEPORTIVO UNIVERSITARIO
 
 Ingrese su DNI:
@@ -47,7 +47,7 @@ Ingrese su DNI:
 ### 👤 Paso 2: Ingreso de un nuevo DNI (no registrado)
 
 El usuario ingresa el DNI `12345678`. Como este no se encuentra registrado, el sistema solicita los datos para registrarlo.
-```python
+```text
 El DNI ingresado no existe en el sistema, por favor registrese primero.
 
 Ingrese su nombre:
@@ -110,6 +110,3 @@ El sistema permitió:
 - Listar correctamente las personas registradas.
 
 ---
-
-## 📄 Licencia	
-Este proyecto es de uso académico exclusivamente.
